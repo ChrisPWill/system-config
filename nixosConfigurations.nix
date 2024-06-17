@@ -1,19 +1,32 @@
 {
   nixpkgs,
   home-manager,
+  nixvim,
   ...
 }: let
-  mkNixosConf = hostname:
+  mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./hardware/${hostname}.nix
-        ./shared-modules/nixos-defaults.nix
+        ./modules/nixos-defaults.nix
+
+        # Home Manager setup
         home-manager.nixosModules.home-manager
-        ./shared-modules/home-manager-defaults.nix
+        ./modules/home-manager-defaults.nix
+        ./users/mainUser.nix
+
+        # Neovim
+        nixvim.nixosModules.nixvim
+        nixvim.homeManagerModules.nixvim
+        ./modules/nixvim/default.nix
       ];
     };
 in {
-  personal-pc = mkNixosConf "personal-pc";
-  personal-vm = mkNixosConf "personal-vm";
+  personal-pc = mkNixosConf {
+    hostname = "personal-pc";
+  };
+  personal-vm = mkNixosConf {
+    hostname = "personal-vm";
+  };
 }

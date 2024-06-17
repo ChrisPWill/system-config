@@ -1,6 +1,7 @@
 {
   nix-darwin,
   home-manager,
+  nixvim,
   ...
 }: let
   mkDarwinConfig = {
@@ -11,8 +12,16 @@
       inherit system;
       modules = [
         ./hardware/${hostname}.nix
+
+        # Home Manager setup
         home-manager.darwinModules.home-manager
-        ./shared-modules/home-manager-defaults.nix
+        ./modules/home-manager-defaults.nix
+        ./users/mainUser.nix
+
+        # Neovim
+        nixvim.nixDarwinModules.nixvim
+        nixvim.homeManagerModules.nixvim
+        ./modules/nixvim/default.nix
       ];
     };
 in {
