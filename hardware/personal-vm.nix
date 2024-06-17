@@ -18,4 +18,14 @@
   networking.firewall.allowedTCPPorts = [22];
 
   system.stateVersion = "24.05";
+
+  users.groups.admin = {};
+  users.users = {
+    admin = {
+      isNormalUser = true;
+      extraGroups = ["wheel"];
+      password = "admin";
+      group = "admin";
+    };
+  };
 }
