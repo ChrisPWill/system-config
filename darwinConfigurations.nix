@@ -1,4 +1,4 @@
-{
+inputs @ {
   nix-darwin,
   home-manager,
   nixvim,
@@ -10,6 +10,10 @@
   }:
     nix-darwin.lib.darwinSystem {
       inherit system;
+      specialArgs = {
+        inherit inputs;
+        home-manager = home-manager.darwinModules.home-manager;
+      };
       modules = [
         ./hardware/${hostname}.nix
 

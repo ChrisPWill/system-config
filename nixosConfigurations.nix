@@ -1,4 +1,4 @@
-{
+inputs @ {
   nixpkgs,
   home-manager,
   nixvim,
@@ -7,6 +7,10 @@
   mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs;
+        home-manager = home-manager.nixosModules.home-manager;
+      };
       modules = [
         ./hardware/${hostname}.nix
         ./modules/nixos-defaults.nix
