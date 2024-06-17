@@ -11,7 +11,7 @@
     nixos-lib.url = "github:NixOS/nixpkgs/nixos-24.05?dir=lib";
 
     nix-darwin = {
-      url = "github:ln17/nix-darwin/master";
+      url = "github:lnl7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixos-stable-lib";
     };
 
