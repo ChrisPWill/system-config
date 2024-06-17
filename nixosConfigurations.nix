@@ -1,7 +1,4 @@
-{
-  nixpkgs,
-  home-manager,
-}: let
+{nixpkgs, ...}: let
   mkNixosConf = hostname:
     nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

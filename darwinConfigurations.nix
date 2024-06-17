@@ -1,8 +1,4 @@
-{
-  nixpkgs,
-  home-manager,
-  nix-darwin,
-}: let
+{nix-darwin, ...}: let
   mkDarwinConfig = {
     hostname,
     system,

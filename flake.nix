@@ -12,12 +12,12 @@
 
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixos-stable-lib";
+      inputs.nixpkgs.follows = "nixos-lib";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixos-stable-lib";
+      inputs.nixpkgs.follows = "nixos-lib";
     };
   };
 
