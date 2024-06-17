@@ -1,4 +1,8 @@
-{nix-darwin, ...}: let
+{
+  nix-darwin,
+  home-manager,
+  ...
+}: let
   mkDarwinConfig = {
     hostname,
     system,
@@ -7,6 +11,7 @@
       inherit system;
       modules = [
         ./hardware/${hostname}.nix
+        home-manager.darwinModules.home-manager
         ./shared-modules/home-manager-defaults.nix
       ];
     };
