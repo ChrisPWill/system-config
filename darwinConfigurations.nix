@@ -1,6 +1,7 @@
 inputs @ {
   nixpkgs,
   nix-darwin,
+  home-manager,
   ...
 }: let
   mkDarwinConfig = {
@@ -15,7 +16,27 @@ inputs @ {
       };
       modules = [
         ./hardware/${hostname}.nix
-        (import ./modules/home-manager-sys-package.nix {inherit system;})
+        home-manager.darwinModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs nixpkgs;};
+          };
+
+          # me
+          users.users.cwilliams = {
+            isNormalUser = true;
+            description = "Chris Williams";
+            extraGroups = [
+              "audio"
+              "docker"
+              "networkmanager"
+              "wheel"
+            ];
+          };
+          home-manager.users.cwilliams = import ./users/me.nix {};
+        }
       ];
     };
 in {
