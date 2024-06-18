@@ -8,14 +8,17 @@ in {
   programs.nixvim.plugins = {
     luasnip.enable = true;
     cmp-nvim-lsp.enable = true;
+    cmp-nvim-lsp-document-symbol.enable = true;
     cmp = {
       enable = true;
+
       settings = {
         sources =
           [
             {name = "nvim_lsp";}
           ]
           ++ lib.optionals cfg.enableCopilot [{name = "copilot";}];
+
         mapping = {
           "<CR>" = ''
             cmp.mapping.confirm({
@@ -49,6 +52,13 @@ in {
             end, {'i', 's'})
           '';
         };
+      };
+
+      cmdline = {
+        "/".sources = [
+          {name = "nvim_lsp_document_symbol";}
+          {name = "buffer";}
+        ];
       };
     };
   };
