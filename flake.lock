@@ -143,7 +143,7 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "nixos-lib"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -185,7 +185,7 @@
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
-          "nixos-lib"
+          "nixpkgs"
         ]
       },
       "locked": {
@@ -224,40 +224,6 @@
         "type": "github"
       }
     },
-    "nixos": {
-      "locked": {
-        "lastModified": 1718437845,
-        "narHash": "sha256-ZT7Oc1g4I4pHVGGjQFnewFVDRLH5cIZhEzODLz9YXeY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "752c634c09ceb50c45e751f8791cb45cb3d46c9e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixos-lib": {
-      "locked": {
-        "dir": "lib",
-        "lastModified": 1718437845,
-        "narHash": "sha256-ZT7Oc1g4I4pHVGGjQFnewFVDRLH5cIZhEzODLz9YXeY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "752c634c09ceb50c45e751f8791cb45cb3d46c9e",
-        "type": "github"
-      },
-      "original": {
-        "dir": "lib",
-        "owner": "NixOS",
-        "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1718437845,
@@ -283,7 +249,7 @@
         "home-manager": "home-manager_2",
         "nix-darwin": "nix-darwin_2",
         "nixpkgs": [
-          "nixos-lib"
+          "nixpkgs"
         ],
         "treefmt-nix": "treefmt-nix"
       },
@@ -306,8 +272,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
-        "nixos": "nixos",
-        "nixos-lib": "nixos-lib",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"
       }

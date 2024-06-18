@@ -15,9 +15,11 @@ inputs @ {
         ./hardware/${hostname}.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = {inherit inputs nixpkgs;};
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs nixpkgs;};
+          };
 
           # me
           users.users.cwilliams.isNormalUser = true;

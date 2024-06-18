@@ -6,22 +6,19 @@
       url = "github:NixOS/nixpkgs/nixos-24.05";
     };
 
-    nixos.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixos-lib.url = "github:NixOS/nixpkgs/nixos-24.05?dir=lib";
-
     nix-darwin = {
       url = "github:lnl7/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixos-lib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
-      inputs.nixpkgs.follows = "nixos-lib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
-      inputs.nixpkgs.follows = "nixos-lib";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
