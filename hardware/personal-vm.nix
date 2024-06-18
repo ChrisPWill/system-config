@@ -1,4 +1,4 @@
-{...}: {
+{lib, ...}: {
   imports = [];
 
   virtualisation.vmVariant = {
@@ -14,6 +14,13 @@
     enable = true;
     settings.PasswordAuthentication = true;
   };
+
+  # Since this is just a VM, it doesn't matter yet
+  fileSystems."/" = {
+    device = "/dev/sda1";
+    fsType = "ext4";
+  };
+  boot.loader.grub.devices = ["/dev/sda1"];
 
   networking.firewall.allowedTCPPorts = [22];
 

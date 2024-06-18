@@ -11,6 +11,9 @@ in
     ...
   }: {
     imports = [];
+    system.stateVersion = "23.11";
+    networking.hostName = "personal-pc-x86_64-linux";
+    networking.hostId = "579220d5";
 
     boot = {
       initrd = {

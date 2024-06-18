@@ -22,7 +22,16 @@ inputs @ {
           };
 
           # me
-          users.users.cwilliams.isNormalUser = true;
+          users.users.cwilliams = {
+            isNormalUser = true;
+            description = "Chris Williams";
+            extraGroups = [
+              "audio"
+              "docker"
+              "networkmanager"
+              "wheel"
+            ];
+          };
           home-manager.users.cwilliams = import ./users/me.nix {};
         }
       ];
