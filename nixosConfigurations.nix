@@ -1,4 +1,8 @@
-inputs @ {nixpkgs, ...}: let
+inputs @ {
+  nixpkgs,
+  home-manager,
+  ...
+}: let
   system = "x86_64-linux";
   mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
@@ -9,7 +13,16 @@ inputs @ {nixpkgs, ...}: let
       };
       modules = [
         ./hardware/${hostname}.nix
-        (import ./modules/home-manager-sys-package.nix {inherit system;})
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = {inherit inputs nixpkgs;};
+
+          # me
+          users.users.cwilliams.isNormalUser = true;
+          home-manager.users.cwilliams = import ./users/me.nix {};
+        }
       ];
     };
 in {
