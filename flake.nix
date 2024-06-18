@@ -27,6 +27,6 @@
 
   outputs = inputs: {
     nixosConfigurations = import ./nixosConfigurations.nix inputs;
-    # darwinConfigurations = import ./darwinConfigurations.nix inputs;
+    darwinConfigurations = import ./darwinConfigurations.nix inputs;
   };
 }
