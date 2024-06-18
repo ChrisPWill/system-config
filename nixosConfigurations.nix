@@ -4,25 +4,27 @@ inputs @ {
   nixvim,
   ...
 }: let
+  home-manager-module = home-manager.nixosModules.home-manager;
+  nixvim-module = nixvim.nixosModules.nixvim;
   mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
-        home-manager = home-manager.nixosModules.home-manager;
+        home-manager = home-manager-module;
+        nixvim = nixvim-module;
       };
       modules = [
         ./hardware/${hostname}.nix
         ./modules/nixos-defaults.nix
 
         # Home Manager setup
-        home-manager.nixosModules.home-manager
+        home-manager-module
         ./modules/home-manager-defaults.nix
         ./users/mainUser.nix
 
         # Neovim
-        nixvim.nixosModules.nixvim
-        nixvim.homeManagerModules.nixvim
+        nixvim-module
         ./modules/nixvim/default.nix
       ];
     };

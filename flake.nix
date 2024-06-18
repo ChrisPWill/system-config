@@ -3,8 +3,7 @@
 
   inputs = {
     nixpkgs = {
-      type = "indirect"; # from the registry
-      id = "nixpkgs";
+      url = "github:NixOS/nixpkgs/nixos-24.05";
     };
 
     nixos.url = "github:NixOS/nixpkgs/nixos-24.05";
@@ -28,6 +27,6 @@
 
   outputs = inputs: {
     nixosConfigurations = import ./nixosConfigurations.nix inputs;
-    darwinConfigurations = import ./darwinConfigurations.nix inputs;
+    # darwinConfigurations = import ./darwinConfigurations.nix inputs;
   };
 }
