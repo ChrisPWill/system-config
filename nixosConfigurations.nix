@@ -23,22 +23,8 @@ inputs @ {
             useUserPackages = true;
             extraSpecialArgs = {inherit inputs nixpkgs;};
           };
-
-          # me
-          programs.zsh.enable = true;
-          users.users.cwilliams = {
-            isNormalUser = true;
-            description = "Chris Williams";
-            shell = pkgs.zsh;
-            extraGroups = [
-              "audio"
-              "docker"
-              "networkmanager"
-              "wheel"
-            ];
-          };
-          home-manager.users.cwilliams = import ./users/me/home-manager.nix {};
         }
+        ./users/users.nix
       ];
     };
 in {
