@@ -1,4 +1,8 @@
-inputs @ {nix-darwin, ...}: let
+inputs @ {
+  nixpkgs,
+  nix-darwin,
+  ...
+}: let
   mkDarwinConfig = {
     hostname,
     system,
@@ -7,9 +11,11 @@ inputs @ {nix-darwin, ...}: let
       inherit system;
       specialArgs = {
         inherit inputs;
+        inherit nixpkgs;
       };
       modules = [
         ./hardware/${hostname}.nix
+        (import ./modules/home-manager-sys-package.nix {inherit system;})
       ];
     };
 in {
