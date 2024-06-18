@@ -1,7 +1,6 @@
 {lib, ...}: {
   imports = [
-    ./plugins/treesitter.nix
-    ./plugins/completions.nix
+    ./plugins/default.nix
   ];
 
   options = {
