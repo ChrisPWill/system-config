@@ -5,6 +5,7 @@
 : {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    ./nixvim
   ];
 
   home = {
@@ -12,6 +13,4 @@
     stateVersion = stateVersion;
   };
   programs.home-manager.enable = true;
-
-  programs.nixvim = import ./nixvim {};
 }
