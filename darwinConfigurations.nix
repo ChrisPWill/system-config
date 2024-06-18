@@ -33,7 +33,7 @@ inputs @ {
             description = "Chris Williams";
             shell = pkgs.zsh;
           };
-          home-manager.users.cwilliams = import ./users/me.nix {};
+          home-manager.users.cwilliams = import ./users/me/home-manager.nix {};
         }
       ];
     };

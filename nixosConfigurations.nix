@@ -37,7 +37,7 @@ inputs @ {
               "wheel"
             ];
           };
-          home-manager.users.cwilliams = import ./users/me.nix {};
+          home-manager.users.cwilliams = import ./users/me/home-manager.nix {};
         }
       ];
     };
