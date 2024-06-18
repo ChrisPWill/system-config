@@ -7,7 +7,10 @@ inputs @ {
   mkDarwinConfig = {
     hostname,
     system,
-  }:
+  }: let
+    pkgUtils = import utils/packages.nix;
+    pkgs = pkgUtils.getPkgs {inherit system nixpkgs;};
+  in
     nix-darwin.lib.darwinSystem {
       inherit system;
       specialArgs = {
@@ -25,15 +28,10 @@ inputs @ {
           };
 
           # me
+          programs.zsh.enable = true;
           users.users.cwilliams = {
-            isNormalUser = true;
             description = "Chris Williams";
-            extraGroups = [
-              "audio"
-              "docker"
-              "networkmanager"
-              "wheel"
-            ];
+            shell = pkgs.zsh;
           };
           home-manager.users.cwilliams = import ./users/me.nix {};
         }

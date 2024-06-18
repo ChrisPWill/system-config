@@ -4,7 +4,10 @@ inputs @ {
   ...
 }: let
   system = "x86_64-linux";
-  mkNixosConf = {hostname}:
+  mkNixosConf = {hostname}: let
+    pkgUtils = import utils/packages.nix;
+    pkgs = pkgUtils.getPkgs {inherit system nixpkgs;};
+  in
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
@@ -22,9 +25,11 @@ inputs @ {
           };
 
           # me
+          programs.zsh.enable = true;
           users.users.cwilliams = {
             isNormalUser = true;
             description = "Chris Williams";
+            shell = pkgs.zsh;
             extraGroups = [
               "audio"
               "docker"
