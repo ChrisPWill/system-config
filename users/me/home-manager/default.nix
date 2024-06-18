@@ -13,8 +13,5 @@
   };
   programs.home-manager.enable = true;
 
-  programs.nixvim = {
-    enable = true;
-    defaultEditor = true;
-  };
+  programs.nixvim = import ./nixvim {};
 }
