@@ -4,10 +4,7 @@ inputs @ {
   ...
 }: let
   system = "x86_64-linux";
-  mkNixosConf = {hostname}: let
-    pkgUtils = import utils/packages.nix;
-    pkgs = pkgUtils.getPkgs {inherit system nixpkgs;};
-  in
+  mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
