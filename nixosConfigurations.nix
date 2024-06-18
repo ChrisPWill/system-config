@@ -1,13 +1,15 @@
 inputs @ {nixpkgs, ...}: let
+  system = "x86_64-linux";
   mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = {
         inherit inputs;
+        inherit nixpkgs;
       };
       modules = [
         ./hardware/${hostname}.nix
-        ./modules/nixos-defaults.nix
+        (import ./modules/nixos-defaults.nix {inherit system;})
       ];
     };
 in {
