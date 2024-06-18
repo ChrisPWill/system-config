@@ -23,5 +23,5 @@
         "audio"
       ];
   };
-  home-manager.users.cwilliams = import ./me/home-manager.nix {};
+  home-manager.users.cwilliams = import ./me/home-manager {};
 }
