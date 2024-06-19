@@ -6,9 +6,12 @@
 }: {
   inputs,
   lib,
+  pkgs,
   ...
 }
-: {
+: let
+  isLinux = pkgs.stdenv.isLinux;
+in {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./alacritty.nix # simple, fast terminal https://github.com/alacritty/alacritty
@@ -35,7 +38,41 @@
     home = {
       username = me;
       stateVersion = stateVersion;
+
+      packages = with pkgs;
+        [
+          # Fast alternative to find
+          # https://github.com/sharkdp/fd
+          fd
+
+          # Terminal JSON viewer
+          # https://fx.wtf/
+          fx
+
+          # Notes app
+          # https://obsidian.md/
+          obsidian
+
+          # Fancy prompt for zsh
+          # https://github.com/justjanne/powerline-go
+          powerline-go
+
+          # xargs + awk with pattern matching
+          # https://github.com/lotabout/rargs
+          rargs
+
+          # Runs with "tldr" - quick facts about an app
+          # https://github.com/dbrgn/tealdeer
+          tealdeer
+        ]
+        ++ lib.optionals isLinux [
+          eww
+          gnome.nautilus
+          gnome.sushi
+          swaybg
+        ];
     };
+
     programs = {
       home-manager.enable = true;
 
@@ -57,8 +94,9 @@
         icons = true;
       };
 
-      # The best browser
-      firefox.enable = true;
+      # The best browser.
+      # Buggy on MacOS so we'll just manage it with homebrew
+      firefox.enable = isLinux;
 
       # Command line fuzzy finder
       # https://github.com/junegunn/fzf
@@ -87,6 +125,8 @@
 
       # Lightweight video player
       mpv.enable = true;
+
+      wofi.enable = isLinux;
     };
   };
 }
