@@ -26,7 +26,7 @@ inputs @ {
             extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
-        ./users/users.nix
+        ./users/me
       ];
     };
 in {
