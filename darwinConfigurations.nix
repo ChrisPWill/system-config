@@ -4,6 +4,7 @@ inputs @ {
   home-manager,
   ...
 }: let
+  theme = import ./utils/theme.nix;
   mkDarwinConfig = {
     hostname,
     system,
@@ -13,15 +14,19 @@ inputs @ {
       specialArgs = {
         inherit inputs;
         inherit nixpkgs;
+        inherit theme;
       };
       modules = [
         ./hardware/${hostname}.nix
+        {
+          nixpkgs.config.allowUnfree = true;
+        }
         home-manager.darwinModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = {inherit inputs nixpkgs;};
+            extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
         ./users/users.nix

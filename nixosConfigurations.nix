@@ -4,21 +4,26 @@ inputs @ {
   ...
 }: let
   system = "x86_64-linux";
+  theme = import ./utils/theme.nix;
   mkNixosConf = {hostname}:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
         inherit inputs;
         inherit nixpkgs;
+        inherit theme;
       };
       modules = [
         ./hardware/${hostname}.nix
+        {
+          nixpkgs.config.allowUnfree = true;
+        }
         home-manager.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = {inherit inputs nixpkgs;};
+            extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
         ./users/users.nix
