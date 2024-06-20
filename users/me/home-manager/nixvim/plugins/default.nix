@@ -13,6 +13,9 @@ in {
 
     # Highlighting etc.
     ./treesitter.nix
+
+    # A group of useful utility plugins
+    ./mini.nix
   ];
 
   programs.nixvim.keymaps = [
