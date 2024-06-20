@@ -19,6 +19,7 @@ in {
     ./vscode.nix # editor for when I pair or need better debugger setup
     ./zellij.nix # terminal multiplexer
     ./zsh.nix # shell, you know where to find it
+    ./hyprland
   ];
 
   options = {
