@@ -27,6 +27,7 @@ inputs @ {
           };
         }
         ./users/me
+        (import ./nixos {})
       ];
     };
 in {
