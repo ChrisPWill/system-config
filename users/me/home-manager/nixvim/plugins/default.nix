@@ -22,22 +22,27 @@ in {
     {
       key = "<leader>ntt";
       action = "<cmd>NvimTreeFindFile<cr>NvimTreeFocus<cr>";
+      options.desc = "Toggle Nixtree";
     }
     {
       key = "<leader>ntf";
       action = "<cmd>NvimTreeFindFile<cr>";
+      options.desc = "Find file in Nixtree";
     }
     {
       key = "<leader>ntr";
       action = "<cmd>NvimTreeRefresh<cr>";
+      options.desc = "Refresh Nixtree";
     }
     {
       key = "<leader>ntx";
       action = "<cmd>NvimTreeClose<cr>";
+      options.desc = "Close Nixtree";
     }
     {
       key = "<leader>nt[";
       action = "<cmd>NvimTreeCollapse<cr>";
+      options.desc = "Collapse folders in Nixtree";
     }
   ];
 
@@ -93,5 +98,7 @@ in {
     trouble.enable = true;
 
     copilot-lua.enable = cfg.enableCopilot;
+
+    which-key.enable = true;
   };
 }
