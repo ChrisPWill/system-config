@@ -34,8 +34,8 @@ inputs @ {
       ];
     };
 in {
-  personal-pc = mkNixosConf {
-    hostname = "personal-pc";
+  personal-pc-x64linux = mkNixosConf {
+    hostname = "personal-pc-x64linux";
     stateVersion = "23.11";
   };
   personal-vm = mkNixosConf {

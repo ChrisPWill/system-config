@@ -12,7 +12,7 @@ in
   }: {
     imports = [];
     system.stateVersion = "23.11";
-    networking.hostName = "personal-pc-x86_64-linux";
+    networking.hostName = "personal-pc-x64linux";
     networking.hostId = "579220d5";
 
     boot = {
