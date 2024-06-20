@@ -64,6 +64,9 @@ in {
           # Runs with "tldr" - quick facts about an app
           # https://github.com/dbrgn/tealdeer
           tealdeer
+
+          # A good font
+          (nerdfonts.override {fonts = ["FantasqueSansMono"];})
         ]
         ++ lib.optionals isLinux [
           eww
@@ -128,5 +131,7 @@ in {
 
       wofi.enable = isLinux;
     };
+
+    fonts.fontconfig.enable = true;
   };
 }
