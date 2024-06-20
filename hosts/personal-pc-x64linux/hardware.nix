@@ -24,10 +24,10 @@ in
           "vfio"
           "vfio_iommu_type1"
 
-          "nvidia"
-          "nvidia_modeset"
-          "nvidia_uvm"
-          "nvidia_drm"
+          # "nvidia"
+          # "nvidia_modeset"
+          # "nvidia_uvm"
+          # "nvidia_drm"
         ];
         luks.devices = {
           "cryptRoot".device = "/dev/disk/by-uuid/fce35182-af3a-4389-af54-527041ba8595";
@@ -88,10 +88,10 @@ in
 
     services.xserver.videoDrivers = [
       "amdgpu"
-      "nvidia"
+      # "nvidia"
     ];
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-    hardware.nvidia.modesetting.enable = true;
+    # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # hardware.nvidia.modesetting.enable = true;
     nixpkgs.config.allowUnfree = true;
     hardware.opengl.enable = true;
 
