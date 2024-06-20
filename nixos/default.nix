@@ -1,6 +1,7 @@
 {loginUser ? "cwilliams"}: {pkgs, ...}: {
   imports = [
     (import ./hyprland {inherit loginUser;})
+    ./personalMachine.nix
   ];
 
   services.gvfs.enable = true;
