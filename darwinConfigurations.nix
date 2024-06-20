@@ -8,6 +8,7 @@ inputs @ {
   mkDarwinConfig = {
     hostname,
     system,
+    stateVersion,
   }:
     nix-darwin.lib.darwinSystem {
       inherit system;
@@ -29,12 +30,13 @@ inputs @ {
             extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
-        ./users/me
+        (import ./users/me {inherit stateVersion;})
       ];
     };
 in {
   cwilliams-work-laptop = mkDarwinConfig {
     hostname = "cwilliams-work-laptop";
     system = "aarch64-darwin";
+    stateVersion = "23.11";
   };
 }

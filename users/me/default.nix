@@ -1,4 +1,4 @@
-{
+{stateVersion ? "24.05"}: {
   pkgs,
   config,
   lib,
@@ -23,5 +23,5 @@
         "audio"
       ];
   };
-  home-manager.users.cwilliams = import ./home-manager {};
+  home-manager.users.cwilliams = import ./home-manager {inherit stateVersion;};
 }

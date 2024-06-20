@@ -5,7 +5,10 @@ inputs @ {
 }: let
   system = "x86_64-linux";
   theme = import ./utils/theme.nix;
-  mkNixosConf = {hostname}:
+  mkNixosConf = {
+    hostname,
+    stateVersion,
+  }:
     nixpkgs.lib.nixosSystem {
       inherit system;
       specialArgs = {
@@ -26,15 +29,17 @@ inputs @ {
             extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
-        ./users/me
+        (import ./users/me {inherit stateVersion;})
         (import ./nixos {})
       ];
     };
 in {
   personal-pc = mkNixosConf {
     hostname = "personal-pc";
+    stateVersion = "23.11";
   };
   personal-vm = mkNixosConf {
     hostname = "personal-vm";
+    stateVersion = "24.05";
   };
 }
