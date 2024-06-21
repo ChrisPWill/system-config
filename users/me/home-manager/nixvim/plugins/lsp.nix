@@ -1,8 +1,14 @@
-{...}: {
+{pkgs, ...}: {
   programs.nixvim = {
-    plugins = {
-      lsp.enable = true;
+    plugins.lsp = {
+      enable = true;
+      servers.nil-ls.enable = true;
     };
+
+    extraPackages = with pkgs; [
+      nil
+    ];
+
 
     keymaps = [
       {
