@@ -1,6 +1,6 @@
 {lib, ...}: {
   imports = [
-    ./plugins/default.nix
+    (import ./plugins/default.nix { utils = import ./utils.nix {}; })
   ];
 
   options = {

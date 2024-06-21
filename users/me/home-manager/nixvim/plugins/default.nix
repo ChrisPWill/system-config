@@ -1,4 +1,4 @@
-{config, ...}: let
+{utils, ...}: {config, ...}: let
   cfg = config.programs.nixvim.custom;
 in {
   imports = [
@@ -6,7 +6,7 @@ in {
     ./completions.nix
 
     # Language server config
-    ./lsp.nix
+    (import ./lsp.nix { inherit utils; })
 
     # Useful popup window tool
     ./telescope.nix
