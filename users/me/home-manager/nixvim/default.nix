@@ -1,4 +1,4 @@
-{ lib, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     (import ./plugins/default.nix { utils = import ./utils.nix { }; })
   ];
@@ -12,5 +12,9 @@
   config.programs.nixvim = {
     enable = true;
     defaultEditor = true;
+
+    clipboard.register = "unnamedplus";
+    clipboard.providers.wl-copy.enable = pkgs.stdenv.isLinux;
+    clipboard.providers.wl-copy.package = pkgs.wl-clipboard-rs;
   };
 }

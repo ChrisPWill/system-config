@@ -22,7 +22,33 @@ in
       };
     };
 
+    plugins.conform-nvim = {
+      enable = true;
+      formatOnSave = true;
+      formattersByFt = {
+        # prettier
+        javascript = [ [ "prettierd prettier" ] ];
+        javascriptreact = [ [ "prettierd prettier" ] ];
+        typescript = [ [ "prettierd prettier" ] ];
+        typescriptreact = [ [ "prettierd prettier" ] ];
+        css = [ [ "prettierd prettier" ] ];
+        html = [ [ "prettierd prettier" ] ];
+        json = [ [ "prettierd prettier" ] ];
+        yaml = [ [ "prettierd prettier" ] ];
+        markdown = [ [ "prettierd prettier" ] ];
+        graphql = [ [ "prettierd prettier" ] ];
+        "markdown.mdx" = [ [ "prettierd prettier" ] ];
+
+        rust = [ "rustfmt" ];
+
+        nix = [ "alejandra" ];
+
+        lua = [ "stylua" ];
+      };
+    };
+
     extraPackages = with pkgs; [
+      alejandra
       bash-language-server
       dockerfile-language-server-nodejs
       lua-language-server
@@ -30,9 +56,13 @@ in
       nixpkgs-fmt
       nodePackages.graphql-language-service-cli
       nodePackages.typescript-language-server
+      prettierd
       rust-analyzer
+      stylua
       tailwindcss-language-server
       vscode-langservers-extracted
+    ] ++ lib.optionals pkg.stdenv.isLinux [
+      wl-clipboard-rs
     ];
 
 
