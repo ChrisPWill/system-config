@@ -24,7 +24,6 @@ in
 
     plugins.conform-nvim = {
       enable = true;
-      formatOnSave = true;
       formattersByFt = {
         # prettier
         javascript = [ [ "prettierd prettier" ] ];

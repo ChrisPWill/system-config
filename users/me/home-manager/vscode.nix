@@ -8,7 +8,6 @@ in {
       editor = {
         fontFamily = "'FantasqueSansM Nerd Font Mono', Menlo, Monaco, 'Courier New', monospace";
         defaultFormatter = "esbenp.prettier-vscode";
-        formatOnSave = true;
 
         tokenColorCustomizations.textMateRules = [
           {
