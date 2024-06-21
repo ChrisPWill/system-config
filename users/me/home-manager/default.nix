@@ -3,10 +3,13 @@
   fullName ? "Chris Williams",
   email ? "chris@chrispwill.com",
   stateVersion ? "24.05",
+  isPersonalMachine ? false,
+  ...
 }: {
   inputs,
   lib,
   pkgs,
+  config,
   ...
 }
 : let
@@ -33,6 +36,11 @@ in {
       type = lib.types.string;
       default = email;
       description = "Email of the current user";
+    };
+    home.isPersonalMachine = lib.mkOption {
+      type = lib.types.bool;
+      default = isPersonalMachine;
+      description = "Is this a personal machine";
     };
   };
 
@@ -75,7 +83,10 @@ in {
           gnome.nautilus
           gnome.sushi
           swaybg
-        ];
+        ]
+	++ lib.optionals config.home.isPersonalMachine [
+	  discord
+	];
     };
 
     programs = {
