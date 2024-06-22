@@ -20,6 +20,10 @@
     clipboard.register = "unnamedplus";
     clipboard.providers.wl-copy.enable = pkgs.stdenv.isLinux;
     clipboard.providers.wl-copy.package = pkgs.wl-clipboard-rs;
+    extraPackages = with pkgs;
+      lib.optionals pkgs.stdenv.isLinux [
+        wl-clipboard-rs
+      ];
 
     opts = {
       autowrite = true; # autowrite when changing buffer
