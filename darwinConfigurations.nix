@@ -32,6 +32,7 @@ inputs @ {
           };
         }
         (import ./users/me {inherit stateVersion;})
+        (import ./darwin {})
       ];
     };
 in {
