@@ -15,7 +15,7 @@ in
         jsonls.enable = true;
         lua-ls.enable = true;
         nil-ls.enable = true;
-        nil-ls.settings.formatting.command = [ "nixpkgs-fmt" ];
+        nil-ls.settings.formatting.command = [ "alejandra" ];
         rust-analyzer.enable = true;
         tailwindcss.enable = true;
         tsserver.enable = true;
@@ -47,19 +47,21 @@ in
     };
 
     extraPackages = with pkgs; [
-      alejandra
+      # language servers
       bash-language-server
       dockerfile-language-server-nodejs
       lua-language-server
       nil
-      nixpkgs-fmt
       nodePackages.graphql-language-service-cli
       nodePackages.typescript-language-server
-      prettierd
       rust-analyzer
-      stylua
       tailwindcss-language-server
       vscode-langservers-extracted
+
+      # formatters
+      prettierd
+      stylua
+      alejandra
     ] ++ lib.optionals pkg.stdenv.isLinux [
       wl-clipboard-rs
     ];

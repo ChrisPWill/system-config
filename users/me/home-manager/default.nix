@@ -20,6 +20,7 @@ in {
     ./alacritty.nix # simple, fast terminal https://github.com/alacritty/alacritty
     ./nixvim # neovim config system https://github.com/nix-community/nixvim
     ./vscode.nix # editor for when I pair or need better debugger setup
+    ./helix.nix # https://helix-editor.com/ - trying this out as an alternative to vim
     ./zellij.nix # terminal multiplexer
     ./zsh.nix # shell, you know where to find it
     ./hyprland # cool window manager
