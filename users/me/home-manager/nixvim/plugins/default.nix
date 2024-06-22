@@ -19,6 +19,9 @@ in {
 
     # For configuring the status column on the left side
     (import ./statuscol.nix {inherit utils;})
+
+    # Debugger adapter protocol
+    (import ./dap.nix {inherit utils;})
   ];
 
   programs.nixvim.keymaps = [
