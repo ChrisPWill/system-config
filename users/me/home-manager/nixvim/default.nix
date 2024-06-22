@@ -37,6 +37,8 @@
       breakindent = true;
       breakindentopt = "sbr,shift:1"; # shows the showbreak character, shifts by 1
       showbreak = "↪ ";
+
+      number = true;
     };
   };
 }
