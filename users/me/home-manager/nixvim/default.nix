@@ -5,6 +5,7 @@
 }: {
   imports = [
     (import ./plugins/default.nix {utils = import ./utils.nix {};})
+    ./colorscheme.nix
   ];
 
   options = {

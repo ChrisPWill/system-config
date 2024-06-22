@@ -1,4 +1,5 @@
 {theme, ...}:
+with theme;
 with theme.normal; {
   programs.nixvim.highlight = {
     # group-name
@@ -219,7 +220,6 @@ with theme.normal; {
     LeapBackdrop = {
       fg = lightgray;
       bg = black;
-      attrs = "NONE";
     };
 
     # lsp-semantic-highlight
