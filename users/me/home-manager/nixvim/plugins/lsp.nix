@@ -3,27 +3,23 @@
   keymapRaw = utils.keymapRaw;
 in {
   programs.nixvim = {
-    extraPackages = with pkgs;
-      [
-        # language servers
-        bash-language-server
-        dockerfile-language-server-nodejs
-        lua-language-server
-        nil
-        nodePackages.graphql-language-service-cli
-        nodePackages.typescript-language-server
-        rust-analyzer
-        tailwindcss-language-server
-        vscode-langservers-extracted
+    extraPackages = with pkgs; [
+      # language servers
+      bash-language-server
+      dockerfile-language-server-nodejs
+      lua-language-server
+      nil
+      nodePackages.graphql-language-service-cli
+      nodePackages.typescript-language-server
+      rust-analyzer
+      tailwindcss-language-server
+      vscode-langservers-extracted
 
-        # formatters
-        prettierd
-        stylua
-        alejandra
-      ]
-      ++ lib.optionals pkg.stdenv.isLinux [
-        wl-clipboard-rs
-      ];
+      # formatters
+      prettierd
+      stylua
+      alejandra
+    ];
 
     plugins.lsp = {
       enable = true;
@@ -36,7 +32,11 @@ in {
         lua-ls.enable = true;
         nil-ls.enable = true;
         nil-ls.settings.formatting.command = ["alejandra"];
-        rust-analyzer.enable = true;
+        rust-analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+        };
         tailwindcss.enable = true;
         tsserver.enable = true;
       };

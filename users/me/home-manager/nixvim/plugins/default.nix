@@ -16,6 +16,12 @@ in {
 
     # A group of useful utility plugins
     ./mini.nix
+
+    # For configuring the status column on the left side
+    (import ./statuscol.nix {inherit utils;})
+
+    # Debugger adapter protocol
+    (import ./dap.nix {inherit utils;})
   ];
 
   programs.nixvim.keymaps = [
@@ -89,9 +95,6 @@ in {
 
     # Add closing brackets/tags/etc.
     surround.enable = true;
-
-    # Make background transparent
-    transparent.enable = true;
 
     # Diagnostics/symbols/etc. at bottom \xx
     trouble.enable = true;

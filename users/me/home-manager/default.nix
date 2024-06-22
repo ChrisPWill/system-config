@@ -29,12 +29,12 @@ in {
 
   options = {
     home.fullName = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = fullName;
       description = "Full name of the current user";
     };
     home.email = lib.mkOption {
-      type = lib.types.string;
+      type = lib.types.str;
       default = email;
       description = "Email of the current user";
     };
@@ -85,9 +85,9 @@ in {
           gnome.sushi
           swaybg
         ]
-	++ lib.optionals config.home.isPersonalMachine [
-	  discord
-	];
+        ++ lib.optionals config.home.isPersonalMachine [
+          discord
+        ];
     };
 
     programs = {
