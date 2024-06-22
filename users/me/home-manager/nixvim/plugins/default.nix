@@ -6,7 +6,7 @@ in {
     ./completions.nix
 
     # Language server config
-    (import ./lsp.nix { inherit utils; })
+    (import ./lsp.nix {inherit utils;})
 
     # Useful popup window tool
     ./telescope.nix
@@ -78,7 +78,6 @@ in {
     # File tree on side
     nvim-tree = {
       enable = true;
-      disableNetrw = true;
       hijackCursor = true;
       modified.enable = true;
       updateFocusedFile.enable = true;
