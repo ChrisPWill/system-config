@@ -81,7 +81,7 @@ in
       (keymapRaw "KP" "vim.diagnostic.goto_prev" "LSP Goto prev diagnostic" { })
       (keymapRaw "KR" "require('telescope.builtin').lsp_references" "Show LSP References" { })
       (keymap "KT" "<cmd>Telescope diagnostics<cr>" "Show LSP Diagnostics" { })
-      (keymapRaw "KF" "function() vim.lsp.buf.format({ async = false, timeout_ms = 10000 }) end" "LSP Format" { })
+      (keymapRaw "KF" "function() require('conform').format({ async = true, timeout_ms = 10000 }) end" "LSP Format" { })
     ];
   };
 }
