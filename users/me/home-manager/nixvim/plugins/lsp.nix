@@ -32,7 +32,11 @@ in {
         lua-ls.enable = true;
         nil-ls.enable = true;
         nil-ls.settings.formatting.command = ["alejandra"];
-        rust-analyzer.enable = true;
+        rust-analyzer = {
+          enable = true;
+          installCargo = false;
+          installRustc = false;
+        };
         tailwindcss.enable = true;
         tsserver.enable = true;
       };

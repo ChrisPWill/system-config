@@ -58,7 +58,7 @@ in {
 
   programs.nixvim.plugins.gitsigns = {
     enable = true;
-    extraOptions = {
+    settings = {
       current_line_blame = true;
     };
   };
