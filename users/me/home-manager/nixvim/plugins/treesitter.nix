@@ -1,13 +1,27 @@
-{
-  programs.nixvim.plugins = {
-    treesitter = {
+{theme, ...}: {
+  programs.nixvim = {
+    plugins.treesitter = {
       enable = true;
       nixvimInjections = true;
       nixGrammars = true;
       indent = true;
     };
 
-    treesitter-context.enable = true;
-    rainbow-delimiters.enable = true;
+    plugins.treesitter-context = {
+      enable = true;
+      settings.separator = "-";
+    };
+    highlight = with theme; {
+      TreesitterContext = {
+        fg = foreground;
+        bg = "NONE";
+      };
+      TreesitterContextSeparator = {
+        fg = foreground;
+        bg = "NONE";
+      };
+    };
+
+    plugins.rainbow-delimiters.enable = true;
   };
 }

@@ -306,6 +306,7 @@ with theme.normal; {
     NotifyTRACEBorder.fg = white;
     NotifyTRACEIcon.fg = white;
     NotifyTRACETitle.fg = white;
+    NotifyBackground.bg = background;
 
     # telescope.nvim
     TelescopeResultsIdentifier.fg = blue;
