@@ -16,6 +16,9 @@ in {
 
     # A group of useful utility plugins
     ./mini.nix
+
+    # For configuring the status column on the left side
+    ./statuscol.nix
   ];
 
   programs.nixvim.keymaps = [
