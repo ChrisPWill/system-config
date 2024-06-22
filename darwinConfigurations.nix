@@ -19,6 +19,7 @@ inputs @ {
       };
       modules = [
         ./hardware/${hostname}.nix
+        ./hosts/personalMachine.nix
         {
           nixpkgs.config.allowUnfree = true;
         }
@@ -35,7 +36,7 @@ inputs @ {
     };
 in {
   cwilliams-work-laptop = mkDarwinConfig {
-    hostname = "cwilliams-work-laptop";
+    hostname = "cwilliams-work-laptop-aarch64darwin";
     system = "aarch64-darwin";
     stateVersion = "23.11";
   };

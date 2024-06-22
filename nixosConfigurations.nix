@@ -18,6 +18,7 @@ inputs @ {
       };
       modules = [
         ./hosts/${hostname}
+        ./hosts/personalMachine.nix
         {
           nixpkgs.config.allowUnfree = true;
         }
