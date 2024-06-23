@@ -8,6 +8,7 @@ in
   {
     config,
     lib,
+    pkgs,
     ...
   }: {
     imports = [];
@@ -100,6 +101,13 @@ in
       enable = true;
       enableGraphical = true;
     };
+
+    # Enable mechanical keyboard config e.g. Via
+    hardware.keyboard.qmk.enable = true;
+    environment.systemPackages = with pkgs; [
+      via
+    ];
+    services.udev.packages = [pkgs.via];
 
     # SPICE redirection lets you essentially hotplug USB keyboards, mice, storage, etc. from the host into the guest
     virtualisation.spiceUSBRedirection.enable = true;
