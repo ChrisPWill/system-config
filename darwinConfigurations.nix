@@ -36,7 +36,7 @@ inputs @ {
       ];
     };
 in {
-  cwilliams-work-laptop = mkDarwinConfig {
+  cwilliams-work-laptop-aarch64darwin = mkDarwinConfig {
     hostname = "cwilliams-work-laptop-aarch64darwin";
     system = "aarch64-darwin";
     stateVersion = "23.11";
