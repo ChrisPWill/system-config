@@ -1,6 +1,8 @@
-{...}: {
+{...}: {pkgs, ...}: {
   services.nix-daemon.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  # Auto upgrade nix package
+  nix.package = pkgs.nix;
   nixpkgs.config.allowUnfree = true;
 
   homebrew = {
@@ -21,6 +23,7 @@
       "scroll-reverser"
       "spotify"
       "visual-studio-code"
+      "nikitabobko/tab/aerospace"
     ];
   };
 

@@ -7,5 +7,4 @@
       "loom"
     ];
   };
-  isPersonalMachine = false;
 }

@@ -88,6 +88,18 @@ in {
         ++ lib.optionals config.home.isPersonalMachine [
           discord
         ];
+
+      file = with lib;
+        mkMerge [
+          (
+            if (pkgs.stdenv.isDarwin)
+            then {
+              ".aerospace.toml".source = ./config-files/aerospace.toml;
+            }
+            else {
+            }
+          )
+        ];
     };
 
     programs = {

@@ -18,8 +18,7 @@ inputs @ {
         inherit theme;
       };
       modules = [
-        ./hardware/${hostname}.nix
-        ./hosts/personalMachine.nix
+        ./hosts/${hostname}
         {
           nixpkgs.config.allowUnfree = true;
         }
