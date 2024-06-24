@@ -48,7 +48,7 @@
       AppleShowAllExtensions = true;
       AppleShowAllFiles = true;
       QuitMenuItem = true;
-      FXEnableExtensionChangeWarning = true;
+      FXEnableExtensionChangeWarning = false;
       ShowPathbar = true;
       ShowStatusBar = true;
       _FXShowPosixPathInTitle = true;
@@ -62,6 +62,12 @@
       KeyRepeat = 1;
       "com.apple.mouse.tapBehavior" = 1;
       "com.apple.swipescrolldirection" = true;
+    };
+
+    trackpad = {
+      Clicking = true; # tap to click
+      TrackpadRightClick = true; # two finger right click
+      TrackpadThreeFingerDrag = true;
     };
   };
 }
