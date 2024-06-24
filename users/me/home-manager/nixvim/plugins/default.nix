@@ -99,8 +99,6 @@ in {
     # Diagnostics/symbols/etc. at bottom \xx
     trouble.enable = true;
 
-    copilot-lua.enable = cfg.enableCopilot;
-
     which-key.enable = true;
   };
 }

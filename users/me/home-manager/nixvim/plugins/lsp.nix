@@ -56,17 +56,17 @@ in {
       '';
       formattersByFt = {
         # prettier
-        javascript = [["prettierd prettier"]];
-        javascriptreact = [["prettierd prettier"]];
-        typescript = [["prettierd prettier"]];
-        typescriptreact = [["prettierd prettier"]];
-        css = [["prettierd prettier"]];
-        html = [["prettierd prettier"]];
-        json = [["prettierd prettier"]];
-        yaml = [["prettierd prettier"]];
-        markdown = [["prettierd prettier"]];
-        graphql = [["prettierd prettier"]];
-        "markdown.mdx" = [["prettierd prettier"]];
+        javascript = [["prettierd" "prettier"]];
+        javascriptreact = [["prettierd" "prettier"]];
+        typescript = [["prettierd" "prettier"]];
+        typescriptreact = [["prettierd" "prettier"]];
+        css = [["prettierd" "prettier"]];
+        html = [["prettierd" "prettier"]];
+        json = [["prettierd" "prettier"]];
+        yaml = [["prettierd" "prettier"]];
+        markdown = [["prettierd" "prettier"]];
+        graphql = [["prettierd" "prettier"]];
+        "markdown.mdx" = [["prettierd" "prettier"]];
 
         rust = ["rustfmt"];
 

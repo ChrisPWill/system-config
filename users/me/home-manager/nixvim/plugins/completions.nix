@@ -17,15 +17,22 @@ in
     luasnip.enable = true;
     cmp-nvim-lsp.enable = true;
     cmp-nvim-lsp-document-symbol.enable = true;
+
+    copilot-lua = {
+      enable = cfg.enableCopilot;
+      panel.enabled = false;
+      suggestion.enabled = false;
+    };
+    copilot-cmp.enable = cfg.enableCopilot;
+
     cmp = {
       enable = true;
 
       settings = {
         sources =
-          [
-            { name = "nvim_lsp"; }
-          ]
-          ++ lib.optionals cfg.enableCopilot [{ name = "copilot"; }];
+          []
+            ++ lib.optionals cfg.enableCopilot [{ name = "copilot"; }]
+            ++ [{ name = "nvim_lsp"; }];
 
         mapping = {
           "<CR>" = ''

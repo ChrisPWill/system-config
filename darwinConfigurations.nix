@@ -9,6 +9,7 @@ inputs @ {
     hostname,
     system,
     stateVersion,
+    extraHomeModules ? [],
   }:
     nix-darwin.lib.darwinSystem {
       inherit system;
@@ -18,8 +19,7 @@ inputs @ {
         inherit theme;
       };
       modules = [
-        ./hardware/${hostname}.nix
-        ./hosts/personalMachine.nix
+        ./hosts/${hostname}
         {
           nixpkgs.config.allowUnfree = true;
         }
@@ -31,14 +31,19 @@ inputs @ {
             extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
-        (import ./users/me {inherit stateVersion;})
+        (import ./users/me {inherit stateVersion extraHomeModules;})
         (import ./darwin {})
       ];
     };
 in {
-  cwilliams-work-laptop = mkDarwinConfig {
+  cwilliams-work-laptop-aarch64darwin = mkDarwinConfig {
     hostname = "cwilliams-work-laptop-aarch64darwin";
     system = "aarch64-darwin";
     stateVersion = "23.11";
+    extraHomeModules = [
+      {
+        programs.nixvim.custom.enableCopilot = true;
+      }
+    ];
   };
 }

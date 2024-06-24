@@ -17,14 +17,14 @@ in {
       ];
 
       adapters.servers = {
-        js-debug = {
-          host = "localhost";
-          port = "\${port}";
-          executable = {
-            command = "${pkgs.nodejs}/bin/node";
-            args = ["${pkgs.vscode-js-debug}/src/dapDebugServer.js" "\${port}"];
-          };
-        };
+        # js-debug = {
+        #   host = "localhost";
+        #   port = "\${port}";
+        #   executable = {
+        #     command = "${pkgs.nodejs}/bin/node";
+        #     args = ["${pkgs.vscode-js-debug}/src/dapDebugServer.js" "\${port}"];
+        #   };
+        # };
       };
     };
 
@@ -49,7 +49,7 @@ in {
     '';
 
     extraPackages = with pkgs; [
-      vscode-js-debug
+      # vscode-js-debug
     ];
   };
 }
