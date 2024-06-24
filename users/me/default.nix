@@ -24,9 +24,9 @@ in {
           isNormalUser = true;
           extraGroups =
             ["wheel"]
-            ++ (optionals isLinux && config.sound.enable) ["audio"]
-            ++ (optionals isLinux && config.virtualisation.docker.enable) ["docker"]
-            ++ (optionals isLinux && config.networking.networkmanager.enable) ["networkmanager"];
+            ++ (optionals (isLinux && config.sound.enable) ["audio"])
+            ++ (optionals (isLinux && config.virtualisation.docker.enable) ["docker"])
+            ++ (optionals (isLinux && config.networking.networkmanager.enable) ["networkmanager"]);
         }
         else {
           home = "/Users/cwilliams";
