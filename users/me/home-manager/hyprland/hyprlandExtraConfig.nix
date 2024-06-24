@@ -8,7 +8,7 @@
 in ''
   monitor=,preferred,auto,1
   monitor=DP-3,3840x2160,0x0,1
-  monitor=DP-2,2560x1440,2560x360,1
+  monitor=DP-2,2560x1440,3840x360,1
   env=WLR_DRM_DEVICES,$HOME/.config/hypr/card:/dev/dri/card0
 
   misc {
@@ -86,13 +86,13 @@ in ''
   exec-once=swayidle
 
   # Default workspaces based on monitor
-  workspace=DP-1,1
+  workspace=DP-3,1
   workspace=DP-2,6
-  workspace=1,monitor:DP-1, default:true
-  workspace=2,monitor:DP-1
-  workspace=3,monitor:DP-1
-  workspace=4,monitor:DP-1
-  workspace=5,monitor:DP-1
+  workspace=1,monitor:DP-3, default:true
+  workspace=2,monitor:DP-3
+  workspace=3,monitor:DP-3
+  workspace=4,monitor:DP-3
+  workspace=5,monitor:DP-3
   workspace=6,monitor:DP-2, default:true
   workspace=7,monitor:DP-2
   workspace=8,monitor:DP-2
