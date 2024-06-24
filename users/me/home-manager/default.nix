@@ -14,6 +14,7 @@
 }
 : let
   isLinux = pkgs.stdenv.isLinux;
+  isDarwin = pkgs.stdenv.isDarwin;
 in {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
@@ -75,6 +76,8 @@ in {
           # Runs with "tldr" - quick facts about an app
           # https://github.com/dbrgn/tealdeer
           tealdeer
+
+          python3
 
           # A good font
           (nerdfonts.override {fonts = ["FantasqueSansMono"];})

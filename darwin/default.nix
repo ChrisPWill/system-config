@@ -23,7 +23,7 @@
       "scroll-reverser"
       "spotify"
       "visual-studio-code"
-      "nikitabobko/tab/aerospace"
+      "nikitabobko/tap/aerospace"
     ];
   };
 

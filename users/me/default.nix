@@ -26,6 +26,7 @@ in {
             ++ (optionals isLinux && config.networking.networkmanager.enable) ["networkmanager"];
         }
         else {
+          home = "/Users/cwilliams";
         }
       )
     ];
