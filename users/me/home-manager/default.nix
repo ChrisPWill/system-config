@@ -50,6 +50,7 @@ in {
     home = {
       username = me;
       stateVersion = stateVersion;
+      homeDirectory = lib.mkIf isDarwin "/Users/${me}";
 
       packages = with pkgs;
         [
