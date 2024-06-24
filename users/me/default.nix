@@ -1,4 +1,7 @@
-{stateVersion ? "24.05"}: {
+{
+  stateVersion ? "24.05",
+  extraHomeModules ? [],
+}: {
   pkgs,
   config,
   lib,
@@ -30,6 +33,6 @@ in {
         }
       )
     ];
-    home-manager.users.cwilliams = import ./home-manager {inherit stateVersion;};
+    home-manager.users.cwilliams = import ./home-manager {inherit stateVersion extraHomeModules;};
   };
 }

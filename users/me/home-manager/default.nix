@@ -4,6 +4,7 @@
   email ? "chris@chrispwill.com",
   stateVersion ? "24.05",
   isPersonalMachine ? false,
+  extraHomeModules ? [],
   ...
 }: {
   inputs,
@@ -46,122 +47,125 @@ in {
     };
   };
 
-  config = {
-    home = {
-      username = me;
-      stateVersion = stateVersion;
-      homeDirectory = lib.mkIf isDarwin "/Users/${me}";
+  config = lib.mkMerge ([
+      {
+        home = {
+          username = me;
+          stateVersion = stateVersion;
+          homeDirectory = lib.mkIf isDarwin "/Users/${me}";
 
-      packages = with pkgs;
-        [
-          # Fast alternative to find
-          # https://github.com/sharkdp/fd
-          fd
+          packages = with pkgs;
+            [
+              # Fast alternative to find
+              # https://github.com/sharkdp/fd
+              fd
 
-          # Terminal JSON viewer
-          # https://fx.wtf/
-          fx
+              # Terminal JSON viewer
+              # https://fx.wtf/
+              fx
 
-          # Notes app
-          # https://obsidian.md/
-          obsidian
+              # Notes app
+              # https://obsidian.md/
+              obsidian
 
-          # Fancy prompt for zsh
-          # https://github.com/justjanne/powerline-go
-          powerline-go
+              # Fancy prompt for zsh
+              # https://github.com/justjanne/powerline-go
+              powerline-go
 
-          # xargs + awk with pattern matching
-          # https://github.com/lotabout/rargs
-          rargs
+              # xargs + awk with pattern matching
+              # https://github.com/lotabout/rargs
+              rargs
 
-          # Runs with "tldr" - quick facts about an app
-          # https://github.com/dbrgn/tealdeer
-          tealdeer
+              # Runs with "tldr" - quick facts about an app
+              # https://github.com/dbrgn/tealdeer
+              tealdeer
 
-          python3
+              python3
 
-          # A good font
-          (nerdfonts.override {fonts = ["FantasqueSansMono"];})
-        ]
-        ++ lib.optionals isLinux [
-          eww
-          gnome.nautilus
-          gnome.sushi
-          swaybg
-        ]
-        ++ lib.optionals config.home.isPersonalMachine [
-          discord
-        ];
+              # A good font
+              (nerdfonts.override {fonts = ["FantasqueSansMono"];})
+            ]
+            ++ lib.optionals isLinux [
+              eww
+              gnome.nautilus
+              gnome.sushi
+              swaybg
+            ]
+            ++ lib.optionals config.home.isPersonalMachine [
+              discord
+            ];
 
-      file = with lib;
-        mkMerge [
-          (
-            if (pkgs.stdenv.isDarwin)
-            then {
-              ".aerospace.toml".source = ./config-files/aerospace.toml;
-            }
-            else {
-            }
-          )
-        ];
-    };
-
-    programs = {
-      home-manager.enable = true;
-
-      # Nice colourful cat alternative
-      # https://github.com/sharkdp/bat
-      bat = {
-        enable = true;
-
-        config = {
-          theme = "TwoDark";
+          file = with lib;
+            mkMerge [
+              (
+                if (pkgs.stdenv.isDarwin)
+                then {
+                  ".aerospace.toml".source = ./config-files/aerospace.toml;
+                }
+                else {
+                }
+              )
+            ];
         };
-      };
 
-      # ls alternative
-      # https://github.com/eza-community/eza
-      eza = {
-        enable = true;
-        git = true;
-        icons = true;
-      };
+        programs = {
+          home-manager.enable = true;
 
-      # The best browser.
-      # Buggy on MacOS so we'll just manage it with homebrew
-      firefox.enable = isLinux;
+          # Nice colourful cat alternative
+          # https://github.com/sharkdp/bat
+          bat = {
+            enable = true;
 
-      # Command line fuzzy finder
-      # https://github.com/junegunn/fzf
-      # Hotkeys:
-      # CTRL-T find a file/dir and put it in command line
-      # CTRL-R search command history
-      # ALT-C to cd into a subdir
-      fzf = {
-        enable = true;
-        enableZshIntegration = true;
-        defaultCommand = "fd --hidden";
-        changeDirWidgetCommand = "fd --type d";
-        fileWidgetCommand = "fd --type f";
-      };
+            config = {
+              theme = "TwoDark";
+            };
+          };
 
-      # Grep alternative. Utility of the year, every year.
-      # https://github.com/BurntSushi/ripgrep
-      ripgrep.enable = true;
+          # ls alternative
+          # https://github.com/eza-community/eza
+          eza = {
+            enable = true;
+            git = true;
+            icons = true;
+          };
 
-      # Nice fast autojump command
-      # https://github.com/ajeetdsouza/zoxide
-      zoxide = {
-        enable = true;
-        enableZshIntegration = true;
-      };
+          # The best browser.
+          # Buggy on MacOS so we'll just manage it with homebrew
+          firefox.enable = isLinux;
 
-      # Lightweight video player
-      mpv.enable = true;
+          # Command line fuzzy finder
+          # https://github.com/junegunn/fzf
+          # Hotkeys:
+          # CTRL-T find a file/dir and put it in command line
+          # CTRL-R search command history
+          # ALT-C to cd into a subdir
+          fzf = {
+            enable = true;
+            enableZshIntegration = true;
+            defaultCommand = "fd --hidden";
+            changeDirWidgetCommand = "fd --type d";
+            fileWidgetCommand = "fd --type f";
+          };
 
-      wofi.enable = isLinux;
-    };
+          # Grep alternative. Utility of the year, every year.
+          # https://github.com/BurntSushi/ripgrep
+          ripgrep.enable = true;
 
-    fonts.fontconfig.enable = true;
-  };
+          # Nice fast autojump command
+          # https://github.com/ajeetdsouza/zoxide
+          zoxide = {
+            enable = true;
+            enableZshIntegration = true;
+          };
+
+          # Lightweight video player
+          mpv.enable = true;
+
+          wofi.enable = isLinux;
+        };
+
+        fonts.fontconfig.enable = true;
+      }
+    ]
+    ++ extraHomeModules);
 }

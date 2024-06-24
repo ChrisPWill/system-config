@@ -9,6 +9,7 @@ inputs @ {
     hostname,
     system,
     stateVersion,
+    extraHomeModules ? [],
   }:
     nix-darwin.lib.darwinSystem {
       inherit system;
@@ -30,7 +31,7 @@ inputs @ {
             extraSpecialArgs = {inherit inputs nixpkgs theme;};
           };
         }
-        (import ./users/me {inherit stateVersion;})
+        (import ./users/me {inherit stateVersion extraHomeModules;})
         (import ./darwin {})
       ];
     };
@@ -39,5 +40,10 @@ in {
     hostname = "cwilliams-work-laptop-aarch64darwin";
     system = "aarch64-darwin";
     stateVersion = "23.11";
+    extraHomeModules = [
+      {
+        programs.nixvim.custom.enableCopilot = true;
+      }
+    ];
   };
 }

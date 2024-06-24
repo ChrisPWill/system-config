@@ -8,6 +8,7 @@ inputs @ {
   mkHomeConfig = {
     stateVersion ? "24.05",
     system,
+    extraModules ? [],
     ...
   }:
     home-manager.lib.homeManagerConfiguration {
@@ -17,13 +18,21 @@ inputs @ {
         {
           nixpkgs.config.allowUnfree = true;
         }
-        (import ./users/me/home-manager {inherit stateVersion;})
+        (import ./users/me/home-manager {
+          inherit stateVersion;
+          extraHomeModules = extraModules;
+        })
       ];
     };
 in {
   "cwilliams@cwilliams-work-laptop-aarch64darwin" = mkHomeConfig {
     stateVersion = "23.11";
     system = "aarch64-darwin";
+    extraModules = [
+      {
+        programs.nixvim.custom.enableCopilot = true;
+      }
+    ];
   };
   "cwilliams@personal-pc-x64linux" = mkHomeConfig {
     stateVersion = "24.05";
