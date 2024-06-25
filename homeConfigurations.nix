@@ -37,5 +37,10 @@ in {
   "cwilliams@personal-pc-x64linux" = mkHomeConfig {
     stateVersion = "24.05";
     system = "x86_64-linux";
+    extraModules = [
+      {
+        home.isPersonalMachine = true;
+      }
+    ];
   };
 }
