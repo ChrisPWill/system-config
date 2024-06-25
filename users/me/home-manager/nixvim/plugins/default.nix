@@ -91,6 +91,13 @@ in {
       view = {
         preserveWindowProportions = true;
       };
+
+      # Replace netrw (default explorer)
+      disableNetrw = true;
+      hijackNetrw = true;
+      hijackUnnamedBufferWhenOpening = true;
+      hijackDirectories.enable = true;
+      openOnSetup = true;
     };
 
     # Add closing brackets/tags/etc.
