@@ -13,11 +13,15 @@
     # locks
     programs.swaylock = {
       enable = true;
+      package = pkgs.swaylock-effects;
       settings = {
         color = "#764783";
         daemonize = true;
         clock = true;
         ignore-empty-password = true;
+        screenshots = true;
+        fade-in = 1;
+        effect-blur = "10x10";
       };
     };
     services.flameshot.enable = true;
