@@ -1,4 +1,3 @@
-
 # Starter Config
 
 if suggestions don't work, first make sure
@@ -13,3 +12,11 @@ if you do not want typechecking only suggestions
 
 types are symlinked to:
 /home/cwilliams/.local/share/com.github.Aylur.ags/types
+
+# Watch mode
+
+Fun command to run ags in watch mode when updating config:
+
+```
+rg --files | nix-shell -p entr --run "entr -r ags"
+```
