@@ -1,16 +1,9 @@
 {
   pkgs,
   lib,
-  theme,
   ...
 }: {
   config = lib.mkIf pkgs.stdenv.isLinux {
-    home.packages = with pkgs; [
-      brightnessctl
-      libnotify
-    ];
-
-    # locks
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;
@@ -24,12 +17,13 @@
         effect-blur = "10x10";
       };
     };
-    services.flameshot.enable = true;
+
     services.hypridle = {
       enable = true;
 
       settings = {
         general = {
+          # check if swaylock is already active, if not, lock
           lock_cmd = "pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock -f";
           before_sleep_cmd = "loginctl lock-session";
           after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl \"dispatch dpms on\"";
@@ -73,15 +67,6 @@
           }
         ];
       };
-    };
-
-    # notifications
-    services.swaync.enable = true;
-
-    wayland.windowManager.hyprland = {
-      enable = true;
-      # enableNvidiaPatches = true;
-      extraConfig = import ./hyprlandExtraConfig.nix {inherit pkgs theme;};
     };
   };
 }

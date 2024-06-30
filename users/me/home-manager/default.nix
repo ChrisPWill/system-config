@@ -25,7 +25,7 @@ in {
     ./helix.nix # https://helix-editor.com/ - trying this out as an alternative to vim
     ./zellij.nix # terminal multiplexer
     ./zsh.nix # shell, you know where to find it
-    ./hyprland # cool window manager
+    ./window-manager # contains config for hyprland, widgets, etc.
     ./git.nix # yep
   ];
 
@@ -89,7 +89,6 @@ in {
               (nerdfonts.override {fonts = ["FantasqueSansMono"];})
             ]
             ++ lib.optionals isLinux [
-              eww
               gnome.nautilus
               gnome.sushi
               swaybg

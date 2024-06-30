@@ -77,11 +77,6 @@ in ''
   bind=CTRL_ALT_SHIFT,F11,exec,swaybg -i ~/.config/wallpapers/safe.* -m fill &
   bind=CTRL_ALT_SHIFT,F12,exec,swaybg -i ~/.config/wallpapers/anime.* -m fill &
 
-  # Start eww
-  exec-once=eww daemon
-  exec-once=eww open bar1
-  exec-once=eww open bar2
-
   # Default workspaces based on monitor
   workspace=DP-3,1
   workspace=DP-2,6
