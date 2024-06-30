@@ -6,6 +6,7 @@
   imports = [
     ./hyprland.nix # window manager
     ./lock.nix # swaylock, hypridle
+    ./widgets.nix # widgets
   ];
 
   config = lib.mkIf pkgs.stdenv.isLinux {

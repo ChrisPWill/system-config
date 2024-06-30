@@ -13,7 +13,7 @@ inputs @ {
   }:
     home-manager.lib.homeManagerConfiguration {
       pkgs = pkgUtil.getPkgs {inherit nixpkgs system;};
-      extraSpecialArgs = {inherit inputs theme;};
+      extraSpecialArgs = {inherit inputs theme system;};
       modules = [
         {
           nixpkgs.config.allowUnfree = true;

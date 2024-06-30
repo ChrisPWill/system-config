@@ -27,7 +27,7 @@ inputs @ {
           home-manager = {
             useGlobalPkgs = true;
             useUserPackages = true;
-            extraSpecialArgs = {inherit inputs nixpkgs theme;};
+            extraSpecialArgs = {inherit inputs nixpkgs theme system;};
           };
         }
         (import ./users/me {inherit stateVersion;})
