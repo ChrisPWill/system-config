@@ -7,6 +7,7 @@
   config = lib.mkIf pkgs.stdenv.isLinux {
     home.packages = with pkgs; [
       brightnessctl
+      libnotify
     ];
 
     # locks
@@ -25,7 +26,7 @@
 
       settings = {
         general = {
-          lock_command = "pidof swaylock || swaylock -f";
+          lock_cmd = "pidof swaylock || swaylock -f";
           before_sleep_cmd = "loginctl lock-session";
           after_sleep_cmd = "hyprctl dispatch dpms on";
           ignore_dbus_inhibit = false;
@@ -33,16 +34,22 @@
 
         listener = [
           # monitor backlight
-          {
-            timeout = 150;
-            on-timeout = "brightnessctl -s set 10";
-            on-resume = "brightnessctl -r";
-          }
+          # {
+          #   timeout = 150;
+          #   on-timeout = "brightnessctl -s set 10";
+          #   on-resume = "brightnessctl -r";
+          # }
           # keyboard backlight
+          # {
+          #   timeout = 150;
+          #   on-timeout = "brightnessctl -sd rgb:kbd_backlight set 0";
+          #   on-resume = "brightnessctl -rd rgb:kbd_backlight";
+          # }
+          # warn after 4.75 minutes
           {
-            timeout = 150;
-            on-timeout = "brightnessctl -sd rgb:kbd_backlight set 0";
-            on-resume = "brightnessctl -rd rgb:kbd_backlight";
+            # timeout = 285;
+            timeout = 285;
+            on-timeout = "notify-send \"About to lock\" \"Move the mouse or it'll lock\"";
           }
           # lock after 5 minutes
           {
@@ -51,13 +58,13 @@
           }
           # screen off after 5.5 minutes
           {
-            timeout = 300;
+            timeout = 330;
             on-timeout = "hyprctl dispatch dkms off";
             on-resume = "hyprctl dispatch dkms on";
           }
           # sleep
           {
-            timeout = 1000;
+            timeout = 900; # 15 minutes
             on-timeout = "systemctl suspend";
           }
         ];

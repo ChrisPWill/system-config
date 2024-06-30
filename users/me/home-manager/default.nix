@@ -52,7 +52,10 @@ in {
         home = {
           username = me;
           stateVersion = stateVersion;
-          homeDirectory = lib.mkIf isDarwin "/Users/${me}";
+          homeDirectory =
+            if isDarwin
+            then "/Users/${me}"
+            else "/home/${me}";
 
           packages = with pkgs;
             [
