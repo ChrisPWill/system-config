@@ -30,9 +30,9 @@
 
       settings = {
         general = {
-          lock_cmd = "pidof swaylock || swaylock -f";
+          lock_cmd = "pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock -f";
           before_sleep_cmd = "loginctl lock-session";
-          after_sleep_cmd = "hyprctl dispatch dpms on";
+          after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl \"dispatch dpms on\"";
           ignore_dbus_inhibit = false;
         };
 
@@ -63,8 +63,8 @@
           # screen off after 5.5 minutes
           {
             timeout = 330;
-            on-timeout = "hyprctl dispatch dkms off";
-            on-resume = "hyprctl dispatch dkms on";
+            on-timeout = "${pkgs.hyprland}/bin/hyprctl \"dispatch dkms off\"";
+            on-resume = "${pkgs.hyprland}/bin/hyprctl \"dispatch dkms on\"";
           }
           # sleep
           {
@@ -78,33 +78,6 @@
     # notifications
     services.swaync.enable = true;
 
-    services.swayidle = {
-      enable = false;
-      events = [
-        {
-          event = "lock";
-          command = "${pkgs.swaylock}/bin/swaylock";
-        }
-        {
-          event = "before-sleep";
-          command = "${pkgs.swaylock}/bin/swaylock";
-        }
-        {
-          event = "after-resume";
-          command = "${pkgs.hyprland}/bin/hyprctl \"dispatcher dpms on\"";
-        }
-      ];
-      timeouts = [
-        {
-          timeout = 600;
-          command = "${pkgs.swaylock}/bin/swaylock";
-        }
-        {
-          timeout = 1200;
-          command = "${pkgs.hyprland}/bin/hyprctl \"dispatcher dpms off\"";
-        }
-      ];
-    };
     wayland.windowManager.hyprland = {
       enable = true;
       # enableNvidiaPatches = true;
