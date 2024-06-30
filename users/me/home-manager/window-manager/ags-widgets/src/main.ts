@@ -56,6 +56,7 @@ const Bar = (monitor: number) =>
 
 App.config({
   windows: () => hyprland.monitors.map((monitor) => monitor.id).map(Bar),
+  // style: "/tmp/ags/js/style.css",
 });
 
 export {};
