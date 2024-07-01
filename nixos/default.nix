@@ -7,10 +7,22 @@
 
   # Enable audio
   sound.enable = true;
-  hardware.pulseaudio = {
+  # Disabled for pipewire instead
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   support32Bit = true;
+  # };
+
+  # Server and user space API to deal with multimedia pipelines
+  # i.e. screen sharing
+  security.rtkit.enable = true;
+  services.pipewire = {
     enable = true;
-    support32Bit = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
+
   environment.systemPackages = with pkgs; [
     pavucontrol
     pulseaudio

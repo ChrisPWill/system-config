@@ -9,7 +9,32 @@
     wayland
     wlr-randr
     xdg-desktop-portal-hyprland
+
+    # grab images from wayland compositor
+    grim
+
+    # select region from wayland compositor
+    slurp
+
+    # Allows streaming wayland windows to X apps
+    xwaylandvideobridge
   ];
+
+  systemd.user.services = {
+    xwaylandvideobridge = {
+      unitConfig = {
+        Description = "Tool to make it easy to stream wayland windows and screens to existing applications running under Xwayland";
+      };
+
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.xwaylandvideobridge}/bin/xwaylandvideobridge";
+        Restart = "on-failure";
+      };
+
+      wantedBy = ["default.target"];
+    };
+  };
 
   environment.sessionVariables = {
     __GL_GSYNC_ALLOWED = "0";
@@ -28,8 +53,11 @@
   xdg.portal = {
     enable = true;
     # wlr.enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    config.common.default = "gtk";
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+    config.common.default = "hyprland";
   };
 
   programs.hyprland = {
@@ -37,6 +65,7 @@
     xwayland = {
       enable = true;
     };
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
 
     # enableNvidiaPatches = true;
   };

@@ -114,4 +114,13 @@ in ''
   bind=CTRL_ALT_SHIFT,8,movetoworkspace,8
   bind=CTRL_ALT_SHIFT,9,movetoworkspace,9
   bind=CTRL_ALT_SHIFT,0,movetoworkspace,10
+
+  # Get required variables for screen sharing (xdg-desktop-portal-hyprland)
+  exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+  windowrulev2 = opacity 0.0 override,class:^(xwaylandvideobridge)$
+  windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+  windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+  windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
+  windowrulev2 = noblur,class:^(xwaylandvideobridge)$
 ''
