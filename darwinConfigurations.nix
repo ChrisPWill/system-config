@@ -19,6 +19,7 @@ inputs @ {
         inherit theme;
       };
       modules = [
+        ./options.nix
         ./hosts/${hostname}
         {
           nixpkgs.config.allowUnfree = true;

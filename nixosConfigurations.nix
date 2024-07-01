@@ -17,6 +17,7 @@ inputs @ {
         inherit theme;
       };
       modules = [
+        ./options.nix
         ./hosts/${hostname}
         ./hosts/personalLinuxMachine.nix
         {
