@@ -19,15 +19,25 @@
           background = theme.background;
           foreground = theme.foreground;
         };
-        normal = {
-          black = theme.normal.black;
-          white = theme.normal.white;
-          red = theme.normal.red;
-          green = theme.normal.green;
-          yellow = theme.normal.yellow;
-          blue = theme.normal.blue;
-          cyan = theme.normal.cyan;
-          magenta = theme.normal.magenta;
+        normal = with theme.normal; {
+          black = black;
+          white = white;
+          red = red;
+          green = green;
+          yellow = yellow;
+          blue = blue;
+          cyan = cyan;
+          magenta = magenta;
+        };
+        bright = with theme.light; {
+          black = black;
+          white = white;
+          red = red;
+          green = green;
+          yellow = yellow;
+          blue = blue;
+          cyan = cyan;
+          magenta = magenta;
         };
       };
       scrolling.history = 20000;

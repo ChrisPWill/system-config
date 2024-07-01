@@ -106,6 +106,10 @@ in {
     # Diagnostics/symbols/etc. at bottom \xx
     trouble.enable = true;
 
+    # Helps identify which key does what
     which-key.enable = true;
+
+    # Shows colour hex codes
+    nvim-colorizer.enable = true;
   };
 }
