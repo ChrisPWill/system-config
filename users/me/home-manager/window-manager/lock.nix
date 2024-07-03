@@ -2,7 +2,15 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  suspendScript = pkgs.writeShellScript "suspend-script" ''
+    ${pkgs.pipewire}/bin/pw-cli i all 2>&1 | ${pkgs.ripgrep}/bin/rg running -q
+    # only suspend if audio isn't running
+    if [ $? == 1 ]; then
+      ${pkgs.systemd}/bin/systemctl suspend
+    fi
+  '';
+in {
   config = lib.mkIf pkgs.stdenv.isLinux {
     programs.swaylock = {
       enable = true;
@@ -26,7 +34,7 @@
           # check if swaylock is already active, if not, lock
           lock_cmd = "pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock -f";
           before_sleep_cmd = "loginctl lock-session";
-          after_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl \"dispatch dpms on\"";
+          after_sleep_cmd = "loginctl lock-session && ${pkgs.hyprland}/bin/hyprctl \"dispatch dpms on\"";
           ignore_dbus_inhibit = false;
         };
 
@@ -45,7 +53,6 @@
           # }
           # warn after 4.75 minutes
           {
-            # timeout = 285;
             timeout = 285;
             on-timeout = "notify-send \"About to lock\" \"Move the mouse or it'll lock\"";
           }
@@ -63,7 +70,7 @@
           # sleep
           {
             timeout = 900; # 15 minutes
-            on-timeout = "systemctl suspend";
+            on-timeout = suspendScript.outPath;
           }
         ];
       };
