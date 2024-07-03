@@ -72,9 +72,11 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 Q = 'built-in'
 W = 'built-in'
 E = 'built-in'
+E = 'built-in'
 A = 'mg279'
 S = 'mg279'
 D = 'mg279'
+F = 'mg279'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -136,6 +138,7 @@ ctrl-alt-e = 'workspace E'
 ctrl-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 ctrl-alt-s = 'workspace S'
 ctrl-alt-d = 'workspace D'
+ctrl-alt-f = 'workspace F'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 ctrl-alt-shift-1 = 'move-node-to-workspace 1'
@@ -147,12 +150,13 @@ ctrl-alt-shift-6 = 'move-node-to-workspace 6'
 ctrl-alt-shift-7 = 'move-node-to-workspace 7'
 ctrl-alt-shift-8 = 'move-node-to-workspace 8'
 ctrl-alt-shift-9 = 'move-node-to-workspace 9'
-ctrl-alt-shift-a = 'move-node-to-workspace A'
-ctrl-alt-shift-s = 'move-node-to-workspace S'
-ctrl-alt-shift-d = 'move-node-to-workspace D'
 ctrl-alt-shift-q = 'move-node-to-workspace Q'
 ctrl-alt-shift-w = 'move-node-to-workspace W'
 ctrl-alt-shift-e = 'move-node-to-workspace E'
+ctrl-alt-shift-a = 'move-node-to-workspace A'
+ctrl-alt-shift-s = 'move-node-to-workspace S'
+ctrl-alt-shift-d = 'move-node-to-workspace D'
+ctrl-alt-shift-f = 'move-node-to-workspace F'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 ctrl-alt-tab = 'workspace-back-and-forth'
