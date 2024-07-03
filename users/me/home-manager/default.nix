@@ -92,6 +92,9 @@ in {
               gnome.nautilus
               gnome.sushi
               swaybg
+
+              # Another notes app, more for outlining
+              logseq
             ]
             ++ lib.optionals config.home.isPersonalMachine [
               discord
