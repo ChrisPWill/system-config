@@ -32,8 +32,6 @@
 
   hardware.opengl = {
     driSupport32Bit = true;
-    # Vulkan
-    driSupport = true;
 
     extraPackages = with pkgs; [
       # VAAPI
