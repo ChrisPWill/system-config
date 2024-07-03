@@ -24,6 +24,9 @@
       "spotify"
       "visual-studio-code"
       "nikitabobko/tap/aerospace"
+
+      # A notes app, more for outlining than obsidian
+      "logseq"
     ];
   };
 
