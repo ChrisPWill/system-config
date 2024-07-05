@@ -72,11 +72,10 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 Q = 'built-in'
 W = 'built-in'
 E = 'built-in'
-E = 'built-in'
 A = ['mg279', 'built-in']
-A = ['mg279', 'built-in']
-A = ['mg279', 'built-in']
-A = ['mg279', 'built-in']
+S = ['mg279', 'built-in']
+D = ['mg279', 'built-in']
+F = ['mg279', 'built-in']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
