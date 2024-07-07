@@ -94,7 +94,7 @@ in
     # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
     # hardware.nvidia.modesetting.enable = true;
     nixpkgs.config.allowUnfree = true;
-    hardware.opengl.enable = true;
+    hardware.graphics.enable = true;
 
     # Logitech
     hardware.logitech.wireless = {
