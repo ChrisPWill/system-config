@@ -92,8 +92,8 @@ in {
               signal-desktop
             ]
             ++ lib.optionals isLinux [
-              gnome.nautilus
-              gnome.sushi
+              nautilus
+              sushi
               swaybg
 
               # Another notes app, more for outlining

@@ -4,7 +4,9 @@
       enable = true;
       nixvimInjections = true;
       nixGrammars = true;
-      indent = true;
+      settings = {
+        indent.enable = true;
+      };
     };
 
     plugins.treesitter-context = {
