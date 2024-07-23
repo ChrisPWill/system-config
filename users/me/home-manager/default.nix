@@ -87,6 +87,9 @@ in {
 
               # A good font
               (nerdfonts.override {fonts = ["FantasqueSansMono"];})
+
+              # Secure messenger
+              signal-desktop
             ]
             ++ lib.optionals isLinux [
               gnome.nautilus
