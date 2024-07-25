@@ -7,7 +7,7 @@
   isPersonalMachine = true;
 
   virtualisation.docker = {
-    enableNvidia = true;
+    # enableNvidia = true;
     enable = true;
   };
 }
