@@ -43,5 +43,8 @@ in
       };
       # SPICE redirection lets you essentially hotplug USB keyboards, mice, storage, etc. from the host into the guest
       virtualisation.spiceUSBRedirection.enable = true;
+
+      virtualisation.libvirtd.enable = true;
+      programs.virt-manager.enable = true;
     };
   }
