@@ -17,6 +17,7 @@
       "amethyst"
       "docker"
       "firefox"
+      "firefox@developer-edition"
       "insomnia"
       "obsidian"
       "raycast"
