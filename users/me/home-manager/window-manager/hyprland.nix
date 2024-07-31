@@ -38,12 +38,12 @@ in {
           rounding = 5;
         };
 
-        bezier = "overshot,0.05,0.9,0.1,0.1";
+        bezier = "overshot,0.05,0.9,0.1,1.1";
         animation = [
           "workspaces,1,8,overshot,fade"
           "windows,1,3,overshot,slide"
         ];
-        
+
         input = {
           kb_layout = "us";
           follow_mouse = 1;
@@ -51,40 +51,43 @@ in {
 
         # binds
         "$mod" = "CTRL_ALT";
-        bind = [
-          # applications
-          "$mod,return,exec,alacritty" # terminal
-          "$mod,r,exec,wofi --show drun" # launcher
+        bind =
+          [
+            # applications
+            "$mod,return,exec,alacritty" # terminal
+            "$mod,r,exec,wofi --show drun" # launcher
 
-          # window management
-          "$mod,c,killactive"
-          "$mod,m,exit"
-          "$mod,p,pin"
-          "$mod,f,fullscreen,0"
-          "$mod SHIFT,f,fakefullscreen,0"
-          "$mod,space,togglefloating"
+            # window management
+            "$mod,c,killactive"
+            "$mod,m,exit"
+            "$mod,p,pin"
+            "$mod,f,fullscreen,0"
+            "$mod SHIFT,f,fakefullscreen,0"
+            "$mod,space,togglefloating"
 
-          # VIM navigation for windows
-          "CTRL_ALT,h,movefocus,l"
-          "CTRL_ALT,j,movefocus,d"
-          "CTRL_ALT,k,movefocus,u"
-          "CTRL_ALT,l,movefocus,r"
-          "CTRL_ALT_SHIFT,right,resizeactive,10 0"
-          "CTRL_ALT_SHIFT,left,resizeactive,-10 0"
-          "CTRL_ALT_SHIFT,up,resizeactive,0 -10"
-          "CTRL_ALT_SHIFT,down,resizeactive,0 10"
+            # VIM navigation for windows
+            "CTRL_ALT,h,movefocus,l"
+            "CTRL_ALT,j,movefocus,d"
+            "CTRL_ALT,k,movefocus,u"
+            "CTRL_ALT,l,movefocus,r"
+            "CTRL_ALT_SHIFT,right,resizeactive,10 0"
+            "CTRL_ALT_SHIFT,left,resizeactive,-10 0"
+            "CTRL_ALT_SHIFT,up,resizeactive,0 -10"
+            "CTRL_ALT_SHIFT,down,resizeactive,0 10"
 
-          # locks
-          "$mod,q,exec,swaylock"
-        ] ++ (
-          # workspaces
-          builtins.concatLists (builtins.genList (
-            x: [
-              "$mod, ${toString (x + 1)}, workspace, ${toString (x + 1)}"
-              "$mod SHIFT, ${toString (x + 1)}, movetoworkspace, ${toString (x + 1)}"
-            ]
-          ) 10)
-        );
+            # locks
+            "$mod,q,exec,swaylock"
+          ]
+          ++ (
+            # workspaces
+            builtins.concatLists (builtins.genList (
+                x: [
+                  "$mod, ${toString (x + 1)}, workspace, ${toString (x + 1)}"
+                  "$mod SHIFT, ${toString (x + 1)}, movetoworkspace, ${toString (x + 1)}"
+                ]
+              )
+              10)
+          );
 
         bindm = [
           "$mod,mouse:272,movewindow"
