@@ -26,7 +26,8 @@ in {
             ["wheel"]
             ++ (optionals isLinux ["audio"])
             ++ (optionals (isLinux && config.virtualisation.docker.enable) ["docker"])
-            ++ (optionals (isLinux && config.networking.networkmanager.enable) ["networkmanager"]);
+            ++ (optionals (isLinux && config.networking.networkmanager.enable) ["networkmanager"])
+            ++ (optionals (isLinux && config.virtualisation.libvirtd.enable) ["libvirtd"]);
         }
         else {
           home = "/Users/cwilliams";
