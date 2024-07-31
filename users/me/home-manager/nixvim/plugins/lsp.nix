@@ -38,7 +38,12 @@ in {
           installRustc = false;
         };
         tailwindcss.enable = true;
-        tsserver.enable = true;
+        tsserver = {
+          enable = true;
+          settings = {
+            maxTsServerMemory = 8192;
+          };
+        };
       };
     };
 
