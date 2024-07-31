@@ -25,13 +25,23 @@
     ];
 
     languages = {
-      language = [
+      language = let prettierFormatter = {
+        command = "prettierd";
+        args = ["--stdin-filename" "file.tsx"];
+      }; in [
         {
           name = "nix";
           formatter = {
             command = "alejandra";
           };
         }
+        { name = "typescript"; formatter = prettierFormatter; }
+        { name = "javascript"; formatter = prettierFormatter; }
+        { name = "tsx"; formatter = prettierFormatter; }
+        { name = "jsx"; formatter = prettierFormatter; }
+        { name = "html"; formatter = prettierFormatter; }
+        { name = "graphql"; formatter = prettierFormatter; }
+        { name = "markdown"; formatter = prettierFormatter; }
       ];
     };
 
