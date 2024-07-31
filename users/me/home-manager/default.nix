@@ -87,9 +87,6 @@ in {
 
               # A good font
               (nerdfonts.override {fonts = ["FantasqueSansMono"];})
-
-              # Secure messenger
-              signal-desktop
             ]
             ++ lib.optionals isLinux [
               nautilus
@@ -98,6 +95,9 @@ in {
 
               # Another notes app, more for outlining
               logseq
+
+              # Secure messenger
+              signal-desktop
             ]
             ++ lib.optionals config.home.isPersonalMachine [
               discord
