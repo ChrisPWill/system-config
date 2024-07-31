@@ -5,8 +5,6 @@
 
   services.gvfs.enable = true;
 
-  # Enable audio
-  sound.enable = true;
   # Disabled for pipewire instead
   # hardware.pulseaudio = {
   #   enable = true;
@@ -30,10 +28,8 @@
     gperftools
   ];
 
-  hardware.opengl = {
-    driSupport32Bit = true;
-    # Vulkan
-    driSupport = true;
+  hardware.graphics = {
+    enable32Bit = true;
 
     extraPackages = with pkgs; [
       # VAAPI

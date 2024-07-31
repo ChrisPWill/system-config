@@ -23,6 +23,9 @@ inputs @ {
         ./hosts/${hostname}
         {
           nixpkgs.config.allowUnfree = true;
+          nixpkgs.config.permittedInsecurePackages = [
+            "electron-27.3.11" # needed for logseq
+          ];
         }
         home-manager.darwinModules.home-manager
         {
