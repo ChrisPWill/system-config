@@ -1,5 +1,8 @@
-{pkgs, theme, ...}:
 {
+  pkgs,
+  theme,
+  ...
+}: {
   programs.helix = {
     enable = true;
 
@@ -20,6 +23,17 @@
       stylua
       alejandra
     ];
+
+    languages = {
+      language = [
+        {
+          name = "nix";
+          formatter = {
+            command = "alejandra";
+          };
+        }
+      ];
+    };
 
     settings = {
       theme = "base16";
@@ -52,35 +66,60 @@
           indent-guides.skip-levels = 1;
         };
       };
+
+      keys.normal = {
+        space.K.F = ":format";
+      };
     };
 
-    themes =
-      with theme;
-      with theme.normal; {
+    themes = with theme;
+    with theme.normal; {
       base16 = let
         transparent = "none";
       in {
         "ui.menu" = transparent;
-        "ui.menu.selected" = { modifiers = [ "reversed" ]; };
-        "ui.linenr" = { fg = gray; bg = dimgray; };
-        "ui.popup" = { modifiers = [ "reversed" ]; };
-        "ui.linenr.selected" = { fg = white; bg = black; modifiers = [ "bold" ]; };
-        "ui.selection" = { fg = black; bg = blue; };
-        "ui.selection.primary" = { modifiers = [ "reversed" ]; };
-        "comment" = { fg = gray; };
-        "ui.statusline" = { fg = white; bg = dimgray; };
-        "ui.statusline.inactive" = { fg = dimgray; bg = white; };
-        "ui.help" = { fg = dimgray; bg = white; };
-        "ui.cursor" = { modifiers = [ "reversed" ]; };
-        "ui.virtual.ruler" = { bg = black; };
-        "ui.virtual.indent-guide" = { fg = foreground; };
+        "ui.menu.selected" = {modifiers = ["reversed"];};
+        "ui.linenr" = {
+          fg = gray;
+          bg = dimgray;
+        };
+        "ui.popup" = {modifiers = ["reversed"];};
+        "ui.linenr.selected" = {
+          fg = white;
+          bg = black;
+          modifiers = ["bold"];
+        };
+        "ui.selection" = {
+          fg = black;
+          bg = blue;
+        };
+        "ui.selection.primary" = {modifiers = ["reversed"];};
+        "comment" = {fg = gray;};
+        "ui.statusline" = {
+          fg = white;
+          bg = dimgray;
+        };
+        "ui.statusline.inactive" = {
+          fg = dimgray;
+          bg = white;
+        };
+        "ui.help" = {
+          fg = dimgray;
+          bg = white;
+        };
+        "ui.cursor" = {modifiers = ["reversed"];};
+        "ui.virtual.ruler" = {bg = black;};
+        "ui.virtual.indent-guide" = {fg = foreground;};
         "variable" = red;
         "variable.builtin" = orange;
         "constant.numeric" = orange;
         "constant" = orange;
         "attributes" = yellow;
         "type" = yellow;
-        "ui.cursor.match" = { fg = yellow; modifiers = [ "underlined" ]; };
+        "ui.cursor.match" = {
+          fg = yellow;
+          modifiers = ["underlined"];
+        };
         "string" = green;
         "variable.other.member" = red;
         "constant.character.escape" = cyan;
@@ -93,8 +132,8 @@
         "diff.plus" = green;
         "diff.delta" = yellow;
         "diff.minus" = red;
-        "diagnostic" = { modifiers = [ "underlined" ]; };
-        "ui.gutter" = { bg = black; };
+        "diagnostic" = {modifiers = ["underlined"];};
+        "ui.gutter" = {bg = black;};
         "info" = blue;
         "hint" = dimgray;
         "debug" = dimgray;
