@@ -25,23 +25,46 @@
     ];
 
     languages = {
-      language = let prettierFormatter = {
-        command = "prettierd";
-        args = ["--stdin-filename" "file.tsx"];
-      }; in [
+      language = let
+        prettierFormatter = {
+          command = "prettierd";
+          args = ["--stdin-filename" "file.tsx"];
+        };
+      in [
         {
           name = "nix";
           formatter = {
             command = "alejandra";
           };
         }
-        { name = "typescript"; formatter = prettierFormatter; }
-        { name = "javascript"; formatter = prettierFormatter; }
-        { name = "tsx"; formatter = prettierFormatter; }
-        { name = "jsx"; formatter = prettierFormatter; }
-        { name = "html"; formatter = prettierFormatter; }
-        { name = "graphql"; formatter = prettierFormatter; }
-        { name = "markdown"; formatter = prettierFormatter; }
+        {
+          name = "typescript";
+          formatter = prettierFormatter;
+        }
+        {
+          name = "javascript";
+          formatter = prettierFormatter;
+        }
+        {
+          name = "tsx";
+          formatter = prettierFormatter;
+        }
+        {
+          name = "jsx";
+          formatter = prettierFormatter;
+        }
+        {
+          name = "html";
+          formatter = prettierFormatter;
+        }
+        {
+          name = "graphql";
+          formatter = prettierFormatter;
+        }
+        {
+          name = "markdown";
+          formatter = prettierFormatter;
+        }
       ];
     };
 
@@ -105,7 +128,7 @@
         };
         "ui.selection" = {
           fg = black;
-          bg = blue;
+          bg = silver;
         };
         "ui.selection.primary" = {modifiers = ["reversed"];};
         "comment" = {fg = gray;};
@@ -121,9 +144,17 @@
           fg = dimgray;
           bg = white;
         };
-        "ui.cursor" = {modifiers = ["reversed"];};
+        "ui.cursor" = {
+          bg = silver;
+          fg = black;
+        };
+        "ui.cursor.primary" = {modifiers = ["reversed"];};
         "ui.virtual.ruler" = {bg = black;};
         "ui.virtual.indent-guide" = {fg = foreground;};
+        "ui.virtual.jump-label" = {
+          fg = black;
+          bg = yellow;
+        };
         "variable" = red;
         "variable.builtin" = orange;
         "constant.numeric" = orange;
