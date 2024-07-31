@@ -52,18 +52,22 @@
         soft-wrap.enable = true;
 
         whitespace = {
-          render.tab = "all";
-          characters.tab = "→";
-          render.tabpad = "all";
-          characters.tabpad = "·";
-
-          render.nbsp = "all";
-          characters.nbsp = "⍽";
-          render.nnbsp = "all";
-          characters.nnbsp = "␣";
-
-          indent-guides.render = true;
-          indent-guides.skip-levels = 1;
+          render = {
+            tab = "all";
+            tabpad = "all";
+            nbsp = "all";
+            nnbsp = "all";
+          };
+          characters = {
+            tab = "→";
+            tabpad = "·";
+            nbsp = "⍽";
+            nnbsp = "␣";
+          };
+          indent-guides = {
+            render = true;
+            skip-levels = 1;
+          };
         };
       };
 
