@@ -13,6 +13,7 @@
     home.packages = with pkgs; [
       brightnessctl
       libnotify
+      wlsunset
     ];
 
     services.flameshot.enable = true;

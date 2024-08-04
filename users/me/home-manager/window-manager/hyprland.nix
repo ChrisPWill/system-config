@@ -17,6 +17,7 @@ in {
         exec-once = [
           "swaybg -i ~/.config/wallpapers/safe.* -m fill &"
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "wlsunset -l -33.86 -L 151.2" # makes screen orange
         ];
 
         env = "WLR_DRM_DEVICES,$HOME/.config/hypr/card:/dev/dri/card0";
