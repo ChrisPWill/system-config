@@ -1,5 +1,5 @@
 const entry = App.configDir + "/src/main.ts";
-const styles = App.configDir + "/src/styles.css";
+const styles = App.configDir + "/src/styles.scss";
 const outdir = "/tmp/ags/js";
 
 try {
@@ -14,7 +14,7 @@ try {
     "--external",
     "gi://*",
   ]);
-  await Utils.execAsync(["cp", styles, `${outdir}/style.css`]);
+  await Utils.execAsync(["sass", styles, `${outdir}/style.css`]);
   await import(`file://${outdir}/main.js`);
 } catch (error) {
   console.error(error);

@@ -31,11 +31,12 @@ const Workspaces = (monitor: number) => {
 };
 
 const ClientTitle = (monitor: number) => {
+  const title = hyprland.active.client
+    .bind("title")
+    .as((title) => (monitor === MAIN_MONITOR ? title : ""));
   return Widget.Label({
-    class_name: "client-title",
-    label: hyprland.active.client
-      .bind("title")
-      .as((title) => (monitor === MAIN_MONITOR ? title : "")),
+    class_name: title.as((title) => (title.length > 0 ? "client-title" : "")),
+    label: title,
   });
 };
 
@@ -61,7 +62,6 @@ const Bar = (monitor: number) =>
 App.config({
   windows: () => hyprland.monitors.map((monitor) => monitor.id).map(Bar),
   style: "/tmp/ags/js/style.css",
-  gtkTheme: "Kanagawa-dark",
 });
 
 export {};

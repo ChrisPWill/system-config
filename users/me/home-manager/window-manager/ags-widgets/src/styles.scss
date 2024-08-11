@@ -1,0 +1,96 @@
+$color-bg: #202020;
+$color-fg: #e8e8e8;
+$color-white: #e8e8e8;
+$color-silver: #c1c1d1;
+$color-lightgray: #c8c8c8;
+$color-gray: #585858;
+$color-dimgray: #383838;
+$color-black: #303030;
+$color-blue: #268bd2;
+$color-green: #859900;
+$color-cyan: #2aa198;
+$color-orange: #ffa996;
+$color-yellow: #d1bc36;
+$color-lightred: #fc423f;
+$color-red: #dc322f;
+$color-magenta: #d33682;
+$color-lwhite: #f6f6f6;
+$color-lsilver: #d1d1e1;
+$color-llightgray: #dfdfdf;
+$color-ldimgray: #afafaf;
+$color-lgray: #989898;
+$color-lblack: #262626;
+$color-lblue: #1b6497;
+$color-lgreen: #6a6a6a;
+$color-lcyan: #71dad2;
+$color-lyellow: #edda61;
+$color-lorange: #f5b1a2;
+$color-llightred: #fc728f;
+$color-lred: #cb4b16;
+$color-lmagenta: #e481b1;
+
+window.bar {
+  background-color: $color-bg;
+  color: $color-fg;
+}
+
+button {
+  min-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 3px;
+  background-color: transparent;
+}
+
+label {
+  font-weight: bold;
+  font-family: "FantasqueSansM Nerd Font Mono";
+}
+
+.workspace {
+  border: 2px solid $color-gray;
+  border-radius: 5px;
+
+  button {
+    text-shadow: none;
+    background-image: none;
+    background-color: $color-bg;
+    color: $color-fg;
+
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid transparent;
+    border-radius: 0px;
+
+    &.focused {
+      color: $color-fg;
+      background-color: $color-green;
+      border-bottom: 3px solid $color-lgreen;
+    }
+
+    &:active {
+      background-color: $color-blue;
+    }
+
+    &:hover {
+      border-bottom: 3px solid $color-fg;
+    }
+  }
+}
+
+
+.client-title {
+  color: $color-fg;
+  border-radius: 3px;
+  border: 2px solid $color-dimgray;
+  border-bottom: 3px solid $color-green;
+}
+
+.notification {
+  color: $color-yellow;
+}
+
+levelbar block,
+highlight {
+  min-height: 10px;
+}

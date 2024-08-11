@@ -21,6 +21,9 @@
 
     # for bundling Typescript-based config
     bun
+
+    # for bundling css
+    sass
   ];
 in {
   imports = [inputs.ags.homeManagerModules.default];
