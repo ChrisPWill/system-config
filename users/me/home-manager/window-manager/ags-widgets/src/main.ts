@@ -3,7 +3,9 @@ const hyprland = await Service.import("hyprland");
 const MAIN_MONITOR = 1;
 
 const Workspaces = (monitor: number) => {
-  const activeId = hyprland.active.workspace.bind("id");
+  const activeIds = hyprland
+    .bind("monitors")
+    .as((monitors) => monitors.map((monitor) => monitor.activeWorkspace.id));
   const workspaces = hyprland.bind("workspaces").as((workspaces) =>
     workspaces
       // Only get workspaces on the monitor that has this bar
@@ -15,13 +17,15 @@ const Workspaces = (monitor: number) => {
         Widget.Button({
           on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
           child: Widget.Label(`${id}`),
-          class_name: activeId.as((i) => `${i === id ? "focused" : ""}`),
+          class_name: activeIds.as((ids) =>
+            ids.some((i) => i === id) ? "focused" : "",
+          ),
         }),
       ),
   );
 
   return Widget.Box({
-    class_name: "workspaces",
+    class_name: "workspace",
     children: workspaces,
   });
 };
@@ -56,7 +60,8 @@ const Bar = (monitor: number) =>
 
 App.config({
   windows: () => hyprland.monitors.map((monitor) => monitor.id).map(Bar),
-  // style: "/tmp/ags/js/style.css",
+  style: "/tmp/ags/js/style.css",
+  gtkTheme: "Kanagawa-dark",
 });
 
 export {};

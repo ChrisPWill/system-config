@@ -14,7 +14,7 @@ try {
     "--external",
     "gi://*",
   ]);
-  await Utils.execAsync(["cp", entry, `${outdir}/style.css`]);
+  await Utils.execAsync(["cp", styles, `${outdir}/style.css`]);
   await import(`file://${outdir}/main.js`);
 } catch (error) {
   console.error(error);

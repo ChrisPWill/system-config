@@ -18,6 +18,9 @@
 
     # Allows streaming wayland windows to X apps
     xwaylandvideobridge
+
+    # gtk theme
+    kanagawa-gtk-theme
   ];
 
   systemd.user.services = {

@@ -1,12 +1,15 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
+}: let
+  agsHomePath = "${config.home.homeDirectory}/.dotfiles/users/me/home-manager/window-manager/ags-widgets";
+in {
   imports = [
-    ./hyprland.nix # window manager
+    (import ./hyprland.nix {agsHomePath = agsHomePath;}) # window manager
     ./lock.nix # swaylock, hypridle
-    ./widgets.nix # widgets
+    (import ./widgets.nix {agsHomePath = agsHomePath;}) # widgets
   ];
 
   config = lib.mkIf pkgs.stdenv.isLinux {

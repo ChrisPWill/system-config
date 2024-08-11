@@ -1,4 +1,4 @@
-{
+{agsHomePath, ...}: {
   pkgs,
   lib,
   inputs,
@@ -31,6 +31,7 @@ in {
     programs.ags = {
       enable = true;
 
+      # Don't let home-manager manage the config
       configDir = null;
 
       extraPackages = deps;
@@ -42,6 +43,6 @@ in {
       };
     };
 
-    xdg.configFile."ags".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/users/me/home-manager/window-manager/ags-widgets";
+    xdg.configFile."ags".source = config.lib.file.mkOutOfStoreSymlink agsHomePath;
   };
 }

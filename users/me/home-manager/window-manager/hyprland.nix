@@ -1,13 +1,17 @@
-{
+{agsHomePath, ...}: {
   pkgs,
   lib,
   theme,
+  config,
   ...
 }: let
   toRgb = theme.utils.toRgb;
   colors = theme.normal;
 in {
   config = lib.mkIf pkgs.stdenv.isLinux {
+    home.packages = with pkgs; [
+      entr
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
       # enableNvidiaPatches = true;
@@ -18,6 +22,7 @@ in {
           "swaybg -i ~/.config/wallpapers/safe.* -m fill &"
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "wlsunset -l -33.86 -L 151.2" # makes screen orange
+          "rg --files ${agsHomePath} | entr -r ags"
         ];
 
         env = "WLR_DRM_DEVICES,$HOME/.config/hypr/card:/dev/dri/card0";
@@ -83,11 +88,19 @@ in {
             # workspaces
             builtins.concatLists (builtins.genList (
                 x: [
-                  "$mod, ${toString (x + 1)}, workspace, ${toString (x + 1)}"
-                  "$mod SHIFT, ${toString (x + 1)}, movetoworkspace, ${toString (x + 1)}"
+                  "$mod, ${
+                    if x + 1 != 10
+                    then toString (x + 1)
+                    else "0"
+                  }, workspace, ${toString (x + 1)}"
+                  "$mod SHIFT,  ${
+                    if x + 1 != 10
+                    then toString (x + 1)
+                    else "0"
+                  }, movetoworkspace, ${toString (x + 1)}"
                 ]
               )
-              11)
+              10)
           );
 
         bindm = [
