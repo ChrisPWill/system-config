@@ -87,7 +87,7 @@ in {
                   "$mod SHIFT, ${toString (x + 1)}, movetoworkspace, ${toString (x + 1)}"
                 ]
               )
-              10)
+              11)
           );
 
         bindm = [
@@ -106,6 +106,23 @@ in {
           "maxsize 1 1,class:^(xwaylandvideobridge)$"
           "noblur,class:^(xwaylandvideobridge)$"
         ];
+
+        workspace =
+          []
+          ++ (
+            builtins.genList (
+              x: "${toString (x + 1)},monitor:${
+                if (x + 1) <= 5
+                then "model:LG HDR 4K"
+                else "model:ASUS MG279"
+              }${
+                if (x + 1) == 1 || (x + 1) == 6
+                then ", default: true"
+                else ""
+              }"
+            )
+            11
+          );
       };
     };
   };
