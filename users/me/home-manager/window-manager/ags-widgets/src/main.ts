@@ -1,11 +1,12 @@
 const hyprland = await Service.import("hyprland");
-// Hard-coded until I come up with a better method
-const MAIN_MONITOR = 1;
 
 const Workspaces = (monitor: number) => {
-  const activeIds = hyprland
-    .bind("monitors")
-    .as((monitors) => monitors.map((monitor) => monitor.activeWorkspace.id));
+  const activeIdsBinding = hyprland.bind("monitors").as((monitors) =>
+    monitors.reduce<Set<number>>((activeSet, monitor) => {
+      activeSet.add(monitor.activeWorkspace.id);
+      return activeSet;
+    }, new Set()),
+  );
   const workspaces = hyprland.bind("workspaces").as((workspaces) =>
     workspaces
       // Only get workspaces on the monitor that has this bar
@@ -13,30 +14,52 @@ const Workspaces = (monitor: number) => {
       // Sort by id
       .sort(({ id: id1 }, { id: id2 }) => (id1 > id2 ? 1 : id2 > id1 ? -1 : 0))
       // Create a button per workspace
-      .map(({ id }) =>
-        Widget.Button({
-          on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
-          child: Widget.Label(`${id}`),
-          class_name: activeIds.as((ids) =>
-            ids.some((i) => i === id) ? "focused" : "",
-          ),
-        }),
-      ),
+      .map(({ id: workspaceId, windows: workspaceWindows }) => {
+        const className = activeIdsBinding.as((activeIdSet) =>
+          [
+            "workspace",
+            activeIdSet.has(workspaceId) ? "active" : undefined,
+            workspaceWindows > 0 ? "has_window" : undefined,
+          ]
+            .filter((className) => className !== undefined)
+            .join(" "),
+        );
+
+        const workspaceLabel = Widget.Label({
+          class_name: className,
+          label: workspaceWindows > 0 ? `${workspaceId}` : `${workspaceId}`,
+        });
+        return workspaceLabel;
+      }),
   );
 
   return Widget.Box({
-    class_name: "workspace",
+    class_name: "workspaces",
     children: workspaces,
   });
 };
 
-const ClientTitle = (monitor: number) => {
-  const title = hyprland.active.client
-    .bind("title")
-    .as((title) => (monitor === MAIN_MONITOR ? title : ""));
+const ClientTitle = (monitorId: number) => {
+  // TODO: Use Utils.merge as per
+  // https://aylur.github.io/ags-docs/config/services/ 
   return Widget.Label({
-    class_name: title.as((title) => (title.length > 0 ? "client-title" : "")),
-    label: title,
+    setup: (self) =>
+      self.hook(hyprland.active.client, (self) => {
+        const activeWorkspaceId =
+          hyprland.getMonitor(monitorId)?.activeWorkspace.id;
+        const activeClient = hyprland.clients
+          .filter((client) => client.workspace.id === activeWorkspaceId)
+          .sort((c1, c2) =>
+            c1.focusHistoryID > c2.focusHistoryID
+              ? 1
+              : c1.focusHistoryID < c2.focusHistoryID
+                ? -1
+                : 0,
+          )[0];
+        const title = activeClient.title ?? "";
+        self.class_name = title.length > 0 ? "client-title" : "";
+        self.label = title;
+      }),
   });
 };
 

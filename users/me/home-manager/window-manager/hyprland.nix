@@ -83,6 +83,11 @@ in {
 
             # locks
             "$mod,q,exec,swaylock"
+
+            # workspace to monitor
+            "$mod SUPER, 1, movecurrentworkspacetomonitor, 0"
+            "$mod SUPER, 2, movecurrentworkspacetomonitor, 1"
+            "$mod SUPER, 3, movecurrentworkspacetomonitor, 2"
           ]
           ++ (
             # workspaces
@@ -124,15 +129,21 @@ in {
           []
           ++ (
             builtins.genList (
-              x: "${toString (x + 1)},monitor:${
-                if (x + 1) <= 5
-                then "model:LG HDR 4K"
-                else "model:ASUS MG279"
-              }${
-                if (x + 1) == 1 || (x + 1) == 6
-                then ", default: true"
-                else ""
-              }"
+              x:
+                builtins.concatStringsSep "," [
+                  (toString (x + 1))
+                  "monitor:${
+                    if (x + 1) <= 5
+                    then "desc:LG Electronics LG HDR 4K 112NTYTMG434"
+                    else "desc:Ancor Communications Inc ASUS MG279 0x0002843F"
+                  }"
+                  "${
+                    if (x + 1) == 1 || (x + 1) == 6
+                    then ", default:true"
+                    else ""
+                  }"
+                  "persistent:true"
+                ]
             )
             11
           );
