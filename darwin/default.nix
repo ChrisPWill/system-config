@@ -28,6 +28,9 @@
 
       # A notes app, more for outlining than obsidian
       "logseq"
+
+      # Keystroke overlay for demos
+      "keycastr"
     ];
   };
 
