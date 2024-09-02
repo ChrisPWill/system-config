@@ -167,7 +167,7 @@ in {
           };
 
           # Lightweight video player
-          mpv.enable = true;
+          mpv.enable = isLinux; # isLinux because of https://github.com/NixOS/nixpkgs/issues/327836 - can remove later
 
           wofi.enable = isLinux;
         };
