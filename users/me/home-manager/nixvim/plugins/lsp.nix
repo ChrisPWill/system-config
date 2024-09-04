@@ -50,34 +50,36 @@ in {
     # Formatter
     plugins.conform-nvim = {
       enable = true;
-      formatOnSave = ''
-        function(bufnr)
-          -- Disable with a global or buffer-local variable
-          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-            return
+      settings = {
+        format_on_save = ''
+          function(bufnr)
+            -- Disable with a global or buffer-local variable
+            if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+              return
+            end
+            return { timeout_ms = 500, lsp_format = "fallback" }
           end
-          return { timeout_ms = 500, lsp_format = "fallback" }
-        end
-      '';
-      formattersByFt = {
-        # prettier
-        javascript = [["prettierd" "prettier"]];
-        javascriptreact = [["prettierd" "prettier"]];
-        typescript = [["prettierd" "prettier"]];
-        typescriptreact = [["prettierd" "prettier"]];
-        css = [["prettierd" "prettier"]];
-        html = [["prettierd" "prettier"]];
-        json = [["prettierd" "prettier"]];
-        yaml = [["prettierd" "prettier"]];
-        markdown = [["prettierd" "prettier"]];
-        graphql = [["prettierd" "prettier"]];
-        "markdown.mdx" = [["prettierd" "prettier"]];
+        '';
+        formatters_by_ft = {
+          # prettier
+          javascript = [["prettierd" "prettier"]];
+          javascriptreact = [["prettierd" "prettier"]];
+          typescript = [["prettierd" "prettier"]];
+          typescriptreact = [["prettierd" "prettier"]];
+          css = [["prettierd" "prettier"]];
+          html = [["prettierd" "prettier"]];
+          json = [["prettierd" "prettier"]];
+          yaml = [["prettierd" "prettier"]];
+          markdown = [["prettierd" "prettier"]];
+          graphql = [["prettierd" "prettier"]];
+          "markdown.mdx" = [["prettierd" "prettier"]];
 
-        rust = ["rustfmt"];
+          rust = ["rustfmt"];
 
-        nix = ["alejandra"];
+          nix = ["alejandra"];
 
-        lua = ["stylua"];
+          lua = ["stylua"];
+        };
       };
     };
 
