@@ -75,6 +75,7 @@
   ];
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   # hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.open = false;
   nixpkgs.config.allowUnfree = true;
   hardware.graphics.enable = true;
 
