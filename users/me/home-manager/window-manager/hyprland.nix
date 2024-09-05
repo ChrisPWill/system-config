@@ -68,7 +68,6 @@ in {
             "$mod,m,exit"
             "$mod,p,pin"
             "$mod,f,fullscreen,0"
-            "$mod SHIFT,f,fakefullscreen,0"
             "$mod,space,togglefloating"
 
             # VIM navigation for windows
