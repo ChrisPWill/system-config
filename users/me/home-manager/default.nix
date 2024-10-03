@@ -20,6 +20,7 @@ in {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./alacritty.nix # simple, fast terminal https://github.com/alacritty/alacritty
+    ./wezterm.nix # exploring this as alacritty alternative https://wezfurlong.org/wezterm/index.html
     ./nixvim # neovim config system https://github.com/nix-community/nixvim
     ./vscode.nix # editor for when I pair or need better debugger setup
     ./helix.nix # https://helix-editor.com/ - trying this out as an alternative to vim
