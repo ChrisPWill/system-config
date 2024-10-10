@@ -29,16 +29,16 @@ in {
         graphql.enable = true;
         html.enable = true;
         jsonls.enable = true;
-        lua-ls.enable = true;
-        nil-ls.enable = true;
-        nil-ls.settings.formatting.command = ["alejandra"];
-        rust-analyzer = {
+        lua_ls.enable = true;
+        nil_ls.enable = true;
+        nil_ls.settings.formatting.command = ["alejandra"];
+        rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
         };
         tailwindcss.enable = true;
-        tsserver = {
+        ts_ls = {
           enable = true;
           settings = {
             maxTsServerMemory = 8192;
