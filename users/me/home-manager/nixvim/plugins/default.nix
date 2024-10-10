@@ -56,7 +56,7 @@ in {
     # Bottom bar with statuses etc.
     airline = {
       enable = true;
-      settings.powerline_fonts = true;
+      settings.powerline_fonts = 1;
     };
 
     # Top bar with tabs etc.
