@@ -101,7 +101,7 @@ in {
     };
 
     # Add closing brackets/tags/etc.
-    surround.enable = true;
+    vim-surround.enable = true;
 
     # Diagnostics/symbols/etc. at bottom \xx
     trouble.enable = true;
