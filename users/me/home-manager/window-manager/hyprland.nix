@@ -124,6 +124,11 @@ in {
           "noblur,class:^(xwaylandvideobridge)$"
         ];
 
+        monitor = [
+          "DP-4,3840x2160,0x0,1"
+          "HDMI-A-3,2560x1440,3840x360,1"
+        ];
+
         workspace =
           []
           ++ (
