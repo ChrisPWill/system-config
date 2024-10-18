@@ -130,6 +130,14 @@ in {
             };
           };
 
+          # https://direnv.net/
+          # https://github.com/nix-community/nix-direnv
+          direnv = {
+            enable = true;
+            enableZshIntegration = true;
+            nix-direnv.enable = true;
+          };
+
           # ls alternative
           # https://github.com/eza-community/eza
           eza = {
