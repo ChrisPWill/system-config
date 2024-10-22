@@ -60,22 +60,22 @@ inherit-env-vars = true  # If you don't touch "exec" section,
 PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 
 [workspace-to-monitor-force-assignment]
-1 = ['lg', 'main']
-2 = ['lg', 'main']
-3 = ['lg', 'main']
-4 = ['lg', 'main']
-5 = ['lg', 'main']
-6 = ['lg', 'main']
-7 = ['lg', 'main']
-8 = ['lg', 'main']
-9 = ['lg', 'main']
-Q = 'built-in'
-W = 'built-in'
-E = 'built-in'
-A = ['mg279', 'built-in']
-S = ['mg279', 'built-in']
-D = ['mg279', 'built-in']
-F = ['mg279', 'built-in']
+1 = ['main']
+2 = ['main']
+3 = ['main']
+4 = ['main']
+5 = ['main']
+6 = ['main']
+7 = ['main']
+8 = ['main']
+9 = ['main']
+Q = ['built-in', 'lg']
+W = ['built-in', 'lg']
+E = ['built-in', 'lg']
+A = ['lg', 'built-in']
+S = ['lg', 'built-in']
+D = ['lg', 'built-in']
+F = ['lg', 'built-in']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
