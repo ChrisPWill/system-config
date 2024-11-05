@@ -60,6 +60,15 @@ in {
 
           packages = with pkgs;
             [
+              # {bash,zsh,fish,powershell,nushell}-completions for 1000+ commands
+              # https://github.com/sigoden/argc-completions
+              argc
+
+              # Command-line YAML/XML/TOML processor
+              # Dependency of argc
+              # https://github.com/kislyuk/yq
+              yq
+
               # Fast alternative to find
               # https://github.com/sharkdp/fd
               fd
