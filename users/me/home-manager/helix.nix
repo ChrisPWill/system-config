@@ -3,6 +3,10 @@
   theme,
   ...
 }: {
+  home.packages = with pkgs; [
+    # copilot language server for helix (top level so copilot can be added)
+    helix-gpt
+  ];
   programs.helix = {
     enable = true;
 
@@ -25,6 +29,10 @@
     ];
 
     languages = {
+      language-server.gpt = {
+        command = "${pkgs.helix-gpt}/bin/helix-gpt";
+        args = ["--handler" "copilot"];
+      };
       language = let
         prettierFormatter = {
           command = "prettierd";
@@ -40,18 +48,22 @@
         {
           name = "typescript";
           formatter = prettierFormatter;
+          language-servers = ["typescript-language-server" "gpt"];
         }
         {
           name = "javascript";
           formatter = prettierFormatter;
+          language-servers = ["typescript-language-server" "gpt"];
         }
         {
           name = "tsx";
           formatter = prettierFormatter;
+          language-servers = ["typescript-language-server" "gpt"];
         }
         {
           name = "jsx";
           formatter = prettierFormatter;
+          language-servers = ["typescript-language-server" "gpt"];
         }
         {
           name = "html";
