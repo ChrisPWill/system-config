@@ -4,6 +4,12 @@
     userName = config.home.fullName;
     userEmail = config.home.email;
     lfs.enable = true;
+
+    # difftastic syntax highlighter
+    difftastic = {
+      enable = true;
+    };
+
     extraConfig = {
       push.autoSetupRemote = true;
       core = {
