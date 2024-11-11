@@ -438,7 +438,7 @@ function vimdifffiles() {
 
   profileExtra = ''
 # Defaults
-EDITOR='nvim'
+EDITOR='hx'
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -446,7 +446,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Global NPM packages
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
-VISUAL='nvim'
+VISUAL='hx'
   '' + (if pkgs.system == "aarch64-darwin" then "eval \"$(/opt/homebrew/bin/brew shellenv)\"" else "");
   };
 }
