@@ -152,7 +152,7 @@ in {
           eza = {
             enable = true;
             git = true;
-            icons = true;
+            icons = "auto";
           };
 
           # The best browser.
