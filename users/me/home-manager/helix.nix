@@ -29,10 +29,10 @@
     ];
 
     languages = {
-      language-server.gpt = {
-        command = "${pkgs.helix-gpt}/bin/helix-gpt";
-        args = ["--handler" "copilot"];
-      };
+      # language-server.gpt = {
+      #   command = "${pkgs.helix-gpt}/bin/helix-gpt";
+      #   args = ["--handler" "copilot"];
+      # };
       language = let
         prettierFormatter = {
           command = "prettierd";
@@ -48,22 +48,26 @@
         {
           name = "typescript";
           formatter = prettierFormatter;
-          language-servers = ["typescript-language-server" "gpt"];
+          # language-servers = ["typescript-language-server" "gpt"];
+          language-servers = ["typescript-language-server"];
         }
         {
           name = "javascript";
           formatter = prettierFormatter;
-          language-servers = ["typescript-language-server" "gpt"];
+          # language-servers = ["typescript-language-server" "gpt"];
+          language-servers = ["typescript-language-server"];
         }
         {
           name = "tsx";
           formatter = prettierFormatter;
-          language-servers = ["typescript-language-server" "gpt"];
+          # language-servers = ["typescript-language-server" "gpt"];
+          language-servers = ["typescript-language-server"];
         }
         {
           name = "jsx";
           formatter = prettierFormatter;
-          language-servers = ["typescript-language-server" "gpt"];
+          # language-servers = ["typescript-language-server" "gpt"];
+          language-servers = ["typescript-language-server"];
         }
         {
           name = "html";
