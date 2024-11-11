@@ -26,6 +26,7 @@ in {
     ./helix.nix # https://helix-editor.com/ - trying this out as an alternative to vim
     ./zellij.nix # terminal multiplexer
     ./zsh.nix # shell, you know where to find it
+    ./nushell.nix # a newer shell to try out
     ./window-manager # contains config for hyprland, widgets, etc.
     ./git.nix # yep
   ];
