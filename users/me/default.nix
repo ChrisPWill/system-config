@@ -15,7 +15,7 @@ in {
       # Common attrs
       {
         description = "Chris Williams";
-        shell = pkgs.zsh;
+        shell = pkgs.nushell;
       }
       (
         if isLinux
