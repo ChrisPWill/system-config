@@ -19,6 +19,21 @@ $env.config = {
     }
 } 
 
+# Some git commands
+# gb - lists git branches including last commit, sorts by commit date.
+def gb [...params] { 
+  git for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short) | %(committerdate:iso8601) | %(authorname) | %(contents:subject)' ...$params | 
+  lines | 
+  split column " | " name lastCommitDate author commitMessage | 
+  sort-by lastCommitDate 
+}
+
+def gl [count: int = 10, ...rest] { 
+  git log -n $count --pretty=format:"%h | %ad | %an | %p | %s%d" --date=iso-local ...$rest | 
+  lines | 
+  split column " | " commitHash dateTime author mergeDetails commitTitle refs 
+}
+
 $env.PATH = ($env.PATH | 
     split row (char esep) |
     prepend /home/cwilliams/.apps |
