@@ -10,4 +10,6 @@ return {
   color_scheme = "chrisTheme",
   window_background_opacity = 0.8,
   macos_window_background_blur = 20,
+
+  -- default_prog = { '@nushell@/bin/nu' }
 }

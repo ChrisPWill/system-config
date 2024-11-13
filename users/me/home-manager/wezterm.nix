@@ -1,4 +1,8 @@
-{theme, ...}: {
+{
+  theme,
+  pkgs,
+  ...
+}: {
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
@@ -37,6 +41,6 @@
       };
     };
 
-    extraConfig = builtins.readFile ./wezterm.lua;
+    extraConfig = builtins.readFile (with pkgs; (replaceVars ./wezterm.lua {inherit nushell;}));
   };
 }

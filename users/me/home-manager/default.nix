@@ -153,6 +153,7 @@ in {
           # https://github.com/eza-community/eza
           eza = {
             enable = true;
+            enableNushellIntegration = true;
             git = true;
             icons = "auto";
           };
@@ -184,6 +185,7 @@ in {
           zoxide = {
             enable = true;
             enableZshIntegration = true;
+            enableNushellIntegration = true;
           };
 
           # Lightweight video player
