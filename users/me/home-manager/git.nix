@@ -8,6 +8,7 @@
     # difftastic syntax highlighter
     difftastic = {
       enable = true;
+      display = "side-by-side-show-both";
     };
 
     extraConfig = {
