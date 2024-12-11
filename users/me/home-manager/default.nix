@@ -97,7 +97,7 @@ in {
               python3
 
               # A good font
-              (nerdfonts.override {fonts = ["FantasqueSansMono"];})
+              nerd-fonts.fantasque-sans-mono
             ]
             ++ lib.optionals isLinux [
               nautilus

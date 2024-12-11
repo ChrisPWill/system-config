@@ -110,6 +110,6 @@ in {
     which-key.enable = true;
 
     # Shows colour hex codes
-    nvim-colorizer.enable = true;
+    colorizer.enable = true;
   };
 }
