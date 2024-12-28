@@ -33,6 +33,15 @@ in {
         programs.nixvim.custom.enableCopilot = true;
       }
     ];
+  }; 
+  "cwilliams@personal-pc-win" = mkHomeConfig {
+    stateVersion = "24.11";
+    system = "x86_64-linux";
+    extraModules = [
+      {
+        home.isPersonalMachine = true;
+      }
+    ];
   };
   "cwilliams@personal-pc-x64linux" = mkHomeConfig {
     stateVersion = "24.05";
