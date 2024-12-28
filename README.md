@@ -11,3 +11,13 @@ result/bin/run-nixos-vm
 ```
 ssh -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no admin@localhost -p 2221
 ```
+
+# Bootstrapping Windows WSL2
+
+Install Nix as per instructions on site
+
+Run this (replacing the host/user combo as necessary)
+```
+nix-shell -p home-manager
+home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake ".#cwilliams@personal-pc-win"
+```
