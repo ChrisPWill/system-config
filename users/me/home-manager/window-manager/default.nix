@@ -12,7 +12,7 @@ in {
     (import ./widgets.nix {agsHomePath = agsHomePath;}) # widgets
   ];
 
-  config = lib.mkIf pkgs.stdenv.isLinux {
+  config = lib.mkIf (pkgs.stdenv.isLinux && !config.home.isWsl) {
     home.packages = with pkgs; [
       brightnessctl
       libnotify

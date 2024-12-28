@@ -37,6 +37,7 @@ in {
     home-manager.users.cwilliams = import ./home-manager {
       inherit stateVersion extraHomeModules;
       isPersonalMachine = config.isPersonalMachine;
+      isWsl = config.isWsl;
     };
   };
 }

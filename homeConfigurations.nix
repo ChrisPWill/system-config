@@ -40,6 +40,7 @@ in {
     extraModules = [
       {
         home.isPersonalMachine = true;
+        home.isWsl = true;
       }
     ];
   };

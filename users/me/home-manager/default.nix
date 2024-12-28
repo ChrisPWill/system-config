@@ -4,6 +4,7 @@
   email ? "chris@chrispwill.com",
   stateVersion ? "24.05",
   isPersonalMachine ? false,
+  isWsl ? false,
   extraHomeModules ? [],
   ...
 }: {
@@ -14,7 +15,7 @@
   ...
 }
 : let
-  isLinux = pkgs.stdenv.isLinux;
+  isLinux = pkgs.stdenv.isLinux && !config.home.isWsl;
   isDarwin = pkgs.stdenv.isDarwin;
 in {
   imports = [
@@ -46,6 +47,11 @@ in {
       type = lib.types.bool;
       default = isPersonalMachine;
       description = "Is this a personal machine";
+    };
+    home.isWsl = lib.mkOption {
+      type = lib.types.bool;
+      default = isWsl;
+      description = "Is this a WSL instance?";
     };
   };
 
@@ -110,7 +116,7 @@ in {
               # Secure messenger
               signal-desktop
             ]
-            ++ lib.optionals config.home.isPersonalMachine [
+            ++ lib.optionals (config.home.isPersonalMachine && !config.home.isWsl) [
               discord
             ];
 

@@ -2,13 +2,14 @@
   theme,
   lib,
   pkgs,
+  config,
   ...
 }: let
   colors = theme.normal;
   lcolors = theme.light;
 in {
   # Only working on linux for me
-  config = lib.mkIf pkgs.stdenv.isLinux {
+  config = lib.mkIf (pkgs.stdenv.isLinux && !config.home.isWsl) {
     programs.vscode = {
       enable = true;
       userSettings = {

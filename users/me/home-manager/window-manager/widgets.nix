@@ -27,7 +27,7 @@
   ];
 in {
   imports = [inputs.ags.homeManagerModules.default];
-  config = lib.mkIf pkgs.stdenv.isLinux {
+  config = lib.mkIf (pkgs.stdenv.isLinux && !config.home.isWsl) {
     home.packages = [
     ];
     # Aylur's GTK Shell widgets https://aylur.github.io/ags-docs/
