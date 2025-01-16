@@ -8,7 +8,7 @@ return {
   },
   font_size = 16.0,
   color_scheme = "chrisTheme",
-  window_background_opacity = 0.8,
+  window_background_opacity = 0.9,
   macos_window_background_blur = 20,
 
   -- default_prog = { '@nushell@/bin/nu' }

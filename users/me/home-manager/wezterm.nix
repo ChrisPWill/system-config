@@ -29,7 +29,7 @@
           silver
         ];
         brights = with theme.light; [
-          black
+          gray
           red
           green
           yellow
