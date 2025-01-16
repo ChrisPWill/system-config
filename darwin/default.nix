@@ -18,6 +18,10 @@
       "docker"
       "firefox"
       "firefox@developer-edition"
+
+      # Another modern terminal replacement
+      "ghostty"
+
       "insomnia"
       "obsidian"
       "raycast"
