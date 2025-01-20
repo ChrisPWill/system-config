@@ -10,9 +10,9 @@
     white = "#e8e8e8";
     silver = "#c1c1d1";
     lightgray = "#c8c8c8";
-    gray = "#585858";
-    dimgray = "#383838";
-    black = "#303030";
+    gray = "#909090";
+    dimgray = "#787878";
+    black = "#606060";
     blue = "#268bd2";
     green = "#859900";
     cyan = "#2aa198";
@@ -26,9 +26,9 @@
     white = "#f6f6f6";
     silver = "#d1d1e1";
     lightgray = "#dfdfdf";
-    dimgray = "#afafaf";
-    gray = "#989898";
-    black = "#262626";
+    dimgray = "#8f8f8f";
+    gray = "#9a9a9a";
+    black = "#666666";
     blue = "#1b6497";
     green = "#6a6a6a";
     cyan = "#71dad2";
