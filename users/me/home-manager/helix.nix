@@ -129,6 +129,7 @@
     with theme.normal; {
       base16 = let
         transparent = "none";
+        light = theme.light;
       in {
         "ui.menu" = transparent;
         "ui.menu.selected" = {modifiers = ["reversed"];};
@@ -161,10 +162,39 @@
           bg = white;
         };
         "ui.cursor" = {
-          bg = silver;
+          bg = light.white;
           fg = black;
+          modifiers = ["dim"];
         };
-        "ui.cursor.primary" = {modifiers = ["reversed"];};
+        "ui.cursor.match" = {
+          bg = light.yellow;
+          modifiers = ["underlined" "dim"];
+        };
+        "ui.cursor.select" = {
+          bg = light.blue;
+          modifiers = ["bold" "dim"];
+        };
+        "ui.cursor.insert" = {
+          bg = light.green;
+          modifiers = ["underlined" "dim"];
+        };
+        "ui.cursor.primary" = {
+          bg = light.white;
+          fg = black;
+          modifiers = ["underlined"];
+        };
+        "ui.cursor.primary.match" = {
+          bg = light.yellow;
+          modifiers = ["underlined"];
+        };
+        "ui.cursor.primary.select" = {
+          bg = light.blue;
+          modifiers = ["bold"];
+        };
+        "ui.cursor.primary.insert" = {
+          bg = light.green;
+          modifiers = ["underlined"];
+        };
         "ui.virtual.ruler" = {bg = black;};
         "ui.virtual.indent-guide" = {fg = foreground;};
         "ui.virtual.jump-label" = {
@@ -177,10 +207,6 @@
         "constant" = orange;
         "attributes" = yellow;
         "type" = yellow;
-        "ui.cursor.match" = {
-          fg = yellow;
-          modifiers = ["underlined"];
-        };
         "string" = green;
         "variable.other.member" = red;
         "constant.character.escape" = cyan;
