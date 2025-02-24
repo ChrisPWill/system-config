@@ -69,13 +69,14 @@ PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
 7 = ['main']
 8 = ['main']
 9 = ['main']
-Q = ['built-in', 'lg']
-W = ['built-in', 'lg']
-E = ['built-in', 'lg']
-A = ['lg', 'built-in']
-S = ['lg', 'built-in']
-D = ['lg', 'built-in']
-F = ['lg', 'built-in']
+Q = ['lg', 'built-in']
+W = ['lg', 'built-in']
+E = ['lg', 'built-in']
+A = ['built-in', 'sidecar', 'lg']
+S = ['built-in', 'sidecar', 'lg']
+D = ['built-in', 'sidecar', 'lg']
+F = ['built-in', 'sidecar', 'lg']
+G = ['sidecar']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
