@@ -35,6 +35,9 @@
 
       # Keystroke overlay for demos
       "keycastr"
+
+      # AI coder
+      "cursor"
     ];
   };
 
