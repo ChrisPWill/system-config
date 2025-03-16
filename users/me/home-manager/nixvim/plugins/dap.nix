@@ -2,10 +2,9 @@
   keymapRaw = utils.keymapRaw;
 in {
   programs.nixvim = {
+    plugins.dap-ui.enable = true;
     plugins.dap = {
       enable = true;
-
-      extensions.dap-ui.enable = true;
 
       configurations.javascript = [
         {

@@ -9,7 +9,8 @@ in {
       dockerfile-language-server-nodejs
       lua-language-server
       nil
-      nodePackages.graphql-language-service-cli
+      # Temp removed https://github.com/NixOS/nixpkgs/issues/390063
+      # nodePackages.graphql-language-service-cli
       nodePackages.typescript-language-server
       rust-analyzer
       tailwindcss-language-server
@@ -26,7 +27,8 @@ in {
       servers = {
         bashls.enable = true;
         dockerls.enable = true;
-        graphql.enable = true;
+        # Temp removed https://github.com/NixOS/nixpkgs/issues/390063
+        # graphql.enable = true;
         html.enable = true;
         jsonls.enable = true;
         lua_ls.enable = true;

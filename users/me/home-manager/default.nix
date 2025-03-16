@@ -86,10 +86,6 @@ in {
               # https://github.com/justjanne/powerline-go
               powerline-go
 
-              # xargs + awk with pattern matching
-              # https://github.com/lotabout/rargs
-              rargs
-
               # Runs with "tldr" - quick facts about an app
               # https://github.com/dbrgn/tealdeer
               tealdeer

@@ -1,5 +1,5 @@
 {...}: {pkgs, ...}: {
-  services.nix-daemon.enable = true;
+  nix.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Auto upgrade nix package
   nix.package = pkgs.nix;
