@@ -89,6 +89,11 @@
       theme = "base16";
 
       editor = {
+        # Experimental, turn off if buggy
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics = {
+          cursor-line = "error";
+        };
         # Show rulers to help keep consistent line length
         rulers = [80 100 120];
 
@@ -123,6 +128,9 @@
 
       keys.normal = {
         space.K.F = ":format";
+        A-W = "move_next_sub_word_start";
+        A-B = "move_prev_sub_word_start";
+        A-E = "move_next_sub_word_end";
       };
     };
 
