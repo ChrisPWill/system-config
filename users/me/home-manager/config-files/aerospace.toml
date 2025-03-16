@@ -75,8 +75,8 @@ E = ['lg', 'built-in']
 A = ['built-in', 'sidecar', 'lg']
 S = ['built-in', 'sidecar', 'lg']
 D = ['built-in', 'sidecar', 'lg']
-F = ['built-in', 'sidecar', 'lg']
 G = ['sidecar']
+Z = ['main'] # Zoom
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -138,7 +138,7 @@ ctrl-alt-e = 'workspace E'
 ctrl-alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 ctrl-alt-s = 'workspace S'
 ctrl-alt-d = 'workspace D'
-ctrl-alt-f = 'workspace F'
+ctrl-alt-z = 'workspace Z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 ctrl-alt-shift-1 = 'move-node-to-workspace 1'
@@ -156,7 +156,7 @@ ctrl-alt-shift-e = 'move-node-to-workspace E'
 ctrl-alt-shift-a = 'move-node-to-workspace A'
 ctrl-alt-shift-s = 'move-node-to-workspace S'
 ctrl-alt-shift-d = 'move-node-to-workspace D'
-ctrl-alt-shift-f = 'move-node-to-workspace F'
+ctrl-alt-shift-z = 'move-node-to-workspace Z'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 ctrl-alt-tab = 'workspace-back-and-forth'
@@ -169,10 +169,10 @@ ctrl-alt-shift-semicolon = 'mode service'
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
+ctrl-alt-shift-esc = ['reload-config', 'mode main']
+ctrl-alt-shift-r = ['flatten-workspace-tree', 'mode main'] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
+ctrl-alt-shift-f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
 backspace = ['close-all-windows-but-current', 'mode main']
 
 ctrl-alt-shift-h = ['join-with left', 'mode main']
