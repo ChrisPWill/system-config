@@ -1,11 +1,10 @@
-{ lib
-, config
-, ...
-}:
-let
-  cfg = config.programs.nixvim.custom;
-in
 {
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.programs.nixvim.custom;
+in {
   programs.nixvim.extraConfigLuaPre = ''
     local has_words_before = function()
       unpack = unpack or table.unpack
@@ -20,8 +19,10 @@ in
 
     copilot-lua = {
       enable = cfg.enableCopilot;
-      panel.enabled = false;
-      suggestion.enabled = false;
+      settings = {
+        panel.enabled = false;
+        suggestion.enabled = false;
+      };
     };
     copilot-cmp.enable = cfg.enableCopilot;
 
@@ -31,8 +32,8 @@ in
       settings = {
         sources =
           []
-            ++ lib.optionals cfg.enableCopilot [{ name = "copilot"; }]
-            ++ [{ name = "nvim_lsp"; }];
+          ++ lib.optionals cfg.enableCopilot [{name = "copilot";}]
+          ++ [{name = "nvim_lsp";}];
 
         mapping = {
           "<CR>" = ''
@@ -71,8 +72,8 @@ in
 
       cmdline = {
         "/".sources = [
-          { name = "nvim_lsp_document_symbol"; }
-          { name = "buffer"; }
+          {name = "nvim_lsp_document_symbol";}
+          {name = "buffer";}
         ];
       };
     };

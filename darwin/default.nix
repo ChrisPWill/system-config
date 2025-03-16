@@ -1,5 +1,5 @@
 {...}: {pkgs, ...}: {
-  services.nix-daemon.enable = true;
+  nix.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Auto upgrade nix package
   nix.package = pkgs.nix;
@@ -35,6 +35,9 @@
 
       # Keystroke overlay for demos
       "keycastr"
+
+      # AI coder
+      "cursor"
     ];
   };
 

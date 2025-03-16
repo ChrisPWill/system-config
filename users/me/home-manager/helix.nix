@@ -16,7 +16,8 @@
       dockerfile-language-server-nodejs
       lua-language-server
       nil
-      nodePackages.graphql-language-service-cli
+      # Temp removed https://github.com/NixOS/nixpkgs/issues/390063
+      # nodePackages.graphql-language-service-cli
       nodePackages.typescript-language-server
       rust-analyzer
       tailwindcss-language-server
