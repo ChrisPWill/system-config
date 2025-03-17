@@ -76,6 +76,9 @@ in {
     # Shows git changes on left side
     gitgutter.enable = true;
 
+    # Discourages bad habits, gives tips
+    hardtime.enable = true;
+
     # Highlights same references
     illuminate.enable = true;
 
