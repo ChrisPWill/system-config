@@ -1,4 +1,4 @@
-{utils, ...}: {config, ...}: let
+{utils, ...}: {config, pkgs, ...}: let
   cfg = config.programs.nixvim.custom;
 in {
   imports = [
@@ -50,6 +50,10 @@ in {
       action = "<cmd>NvimTreeCollapse<cr>";
       options.desc = "Collapse folders in Nixtree";
     }
+  ];
+
+  programs.nixvim.extraPlugins = with pkgs; [
+    vimPlugins.plenary-nvim
   ];
 
   programs.nixvim.plugins = {

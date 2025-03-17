@@ -21,10 +21,10 @@
     clipboard.register = "unnamedplus";
     clipboard.providers.wl-copy.enable = pkgs.stdenv.isLinux;
     clipboard.providers.wl-copy.package = pkgs.wl-clipboard-rs;
-    extraPackages = with pkgs;
-      lib.optionals pkgs.stdenv.isLinux [
+    extraPackages = with pkgs; ([]
+      ++ lib.optionals pkgs.stdenv.isLinux [
         wl-clipboard-rs
-      ];
+      ]);
 
     opts = {
       autowrite = true; # autowrite when changing buffer
@@ -44,6 +44,26 @@
       showbreak = "↪ ";
 
       number = true;
+    };
+
+    # Performance tweaks
+    luaLoader.enable = true;
+    performance = {
+      # https://nix-community.github.io/nixvim/performance/combinePlugins.html
+      # If there are naming collisions, can use the standalonePlugins option
+      combinePlugins.enable = false;
+      combinePlugins.standalonePlugins = [
+        "nvim-treesitter"
+        "nvim-treesitter-textobjects"
+        "mini.nvim"
+        "copilot.lua"
+      ];
+      byteCompileLua = {
+        enable = true;
+        nvimRuntime = true;
+        configs = true;
+        plugins = true;
+      };
     };
   };
 }

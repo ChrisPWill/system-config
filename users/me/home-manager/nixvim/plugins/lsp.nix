@@ -50,7 +50,14 @@ in {
     };
 
     # Formatter
-    plugins.conform-nvim = {
+    plugins.conform-nvim = let
+      prettierDefault = {
+        __unkeyed-1 = "prettierd";
+        __unkeyed-2 = "prettier";
+        timeout_ms = 2000;
+        stop_after_first = true;
+      };
+    in {
       enable = true;
       settings = {
         format_on_save = ''
@@ -64,17 +71,17 @@ in {
         '';
         formatters_by_ft = {
           # prettier
-          javascript = [["prettierd" "prettier"]];
-          javascriptreact = [["prettierd" "prettier"]];
-          typescript = [["prettierd" "prettier"]];
-          typescriptreact = [["prettierd" "prettier"]];
-          css = [["prettierd" "prettier"]];
-          html = [["prettierd" "prettier"]];
-          json = [["prettierd" "prettier"]];
-          yaml = [["prettierd" "prettier"]];
-          markdown = [["prettierd" "prettier"]];
-          graphql = [["prettierd" "prettier"]];
-          "markdown.mdx" = [["prettierd" "prettier"]];
+          javascript = prettierDefault;
+          javascriptreact = prettierDefault;
+          typescript = prettierDefault;
+          typescriptreact = prettierDefault;
+          css = prettierDefault;
+          html = prettierDefault;
+          json = prettierDefault;
+          yaml = prettierDefault;
+          markdown = prettierDefault;
+          graphql = prettierDefault;
+          "markdown.mdx" = prettierDefault;
 
           rust = ["rustfmt"];
 
