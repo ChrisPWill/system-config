@@ -4,11 +4,8 @@
     userName = config.home.fullName;
     userEmail = config.home.email;
     lfs.enable = true;
-
-    # difftastic syntax highlighter
-    difftastic = {
+    diff-so-fancy = {
       enable = true;
-      display = "side-by-side-show-both";
     };
 
     extraConfig = {
