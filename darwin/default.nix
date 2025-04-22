@@ -16,8 +16,6 @@
       "alacritty"
       "amethyst"
       "docker"
-      "firefox"
-      "firefox@developer-edition"
 
       # Another modern terminal replacement
       "ghostty"
@@ -38,6 +36,9 @@
 
       # AI coder
       "cursor"
+
+      # For work
+      "cloudtoken"
     ];
   };
 
