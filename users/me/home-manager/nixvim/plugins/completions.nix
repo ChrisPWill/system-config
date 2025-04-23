@@ -14,8 +14,14 @@ in {
   '';
   programs.nixvim.plugins = {
     luasnip.enable = true;
+    luasnip.autoLoad = true;
+    friendly-snippets.enable = true;
     cmp-nvim-lsp.enable = true;
     cmp-nvim-lsp-document-symbol.enable = true;
+
+    cmp_luasnip.enable = true;
+    cmp-npm.enable = true;
+    cmp-path.enable = true;
 
     copilot-lua = {
       enable = cfg.enableCopilot;
