@@ -13,8 +13,23 @@ in {
     end
   '';
   programs.nixvim.plugins = {
-    luasnip.enable = true;
-    luasnip.autoLoad = true;
+    luasnip = {
+      enable = true;
+      autoLoad = true;
+      settings = {
+        keep_roots = true;
+        link_roots = true;
+        link_children = true;
+        enable_autosnippets = false;
+      };
+      fromVscode = [{}];
+      fromLua = [
+        {
+          lazyLoad = true;
+          paths = ./snippets;
+        }
+      ];
+    };
     friendly-snippets.enable = true;
     cmp-nvim-lsp.enable = true;
     cmp-nvim-lsp-document-symbol.enable = true;
@@ -34,12 +49,21 @@ in {
 
     cmp = {
       enable = true;
+      autoEnableSources = true;
 
       settings = {
+        snippet.expand = ''
+          function(args)
+            require("luasnip").lsp_expand(args.body)
+          end
+        '';
         sources =
-          []
-          ++ lib.optionals cfg.enableCopilot [{name = "copilot";}]
-          ++ [{name = "nvim_lsp";}];
+          [
+            {name = "luasnip";}
+            {name = "nvim_lsp";}
+            {name = "nvim_lsp_signature_help";}
+          ]
+          ++ lib.optionals cfg.enableCopilot [{name = "copilot";}];
 
         mapping = {
           "<CR>" = ''
