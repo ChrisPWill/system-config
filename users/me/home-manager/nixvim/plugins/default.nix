@@ -1,4 +1,8 @@
-{utils, ...}: {config, pkgs, ...}: let
+{utils, ...}: {
+  config,
+  pkgs,
+  ...
+}: let
   cfg = config.programs.nixvim.custom;
 in {
   imports = [
@@ -7,6 +11,9 @@ in {
 
     # Language server config
     (import ./lsp.nix {inherit utils;})
+
+    # Refactoring tools
+    ./refactoring.nix
 
     # Useful popup window tool
     ./telescope.nix
@@ -109,6 +116,9 @@ in {
 
     # Add closing brackets/tags/etc.
     vim-surround.enable = true;
+
+    # Cursor animations
+    smear-cursor.enable = true;
 
     # Diagnostics/symbols/etc. at bottom \xx
     trouble.enable = true;
