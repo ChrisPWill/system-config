@@ -12,6 +12,10 @@
       upgrade = true;
       cleanup = "uninstall";
     };
+    brews = [
+      "tfenv"
+      "awscli"
+    ];
     casks = [
       "alacritty"
       "amethyst"
