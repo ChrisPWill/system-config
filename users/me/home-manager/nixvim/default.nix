@@ -30,6 +30,12 @@
       autowrite = true; # autowrite when changing buffer
       termguicolors = true;
 
+      cursorline = true; # highlight the current line
+      undofile = true; # enable undo files to persist across sessions
+
+      ignorecase = true; # ignore case in search
+      smartcase = true; # case sensitive if any uppercase is used
+
       # tabs and spacing
       tabstop = 2; # number of spaces that a <Tab> counts for
       shiftwidth = 2; # number of spaces for each step of autoindent
@@ -37,12 +43,15 @@
 
       # indents
       autoindent = true; # copy indent from current line when starting a new line
+      smartindent = true; # smart autoindenting based on syntax
 
       # wraps
       breakindent = true;
       breakindentopt = "sbr,shift:1"; # shows the showbreak character, shifts by 1
       showbreak = "↪ ";
 
+      # line numbers and other column UI
+      signcolumn = "yes"; # show sign column by default (for diagnostics)
       number = true;
     };
 
