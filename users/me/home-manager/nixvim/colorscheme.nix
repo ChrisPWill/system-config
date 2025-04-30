@@ -142,7 +142,9 @@ with theme.normal; {
       fg = blue;
       bold = true;
     };
-    Visual.bg = gray;
+    Visual = {
+      reverse = true;
+    };
     VisualNOS.bg = gray;
     WarningMsg.fg = yellow;
     Whitespace.fg = silver;

@@ -10,9 +10,9 @@
     white = "#e8e8e8";
     silver = "#c1c1d1";
     lightgray = "#c8c8c8";
-    gray = "#909090";
-    dimgray = "#787878";
-    black = "#606060";
+    gray = "#606060";
+    dimgray = "#313135";
+    black = "#303030";
     blue = "#268bd2";
     green = "#859900";
     cyan = "#2aa198";
@@ -30,7 +30,7 @@
     gray = "#9a9a9a";
     black = "#666666";
     blue = "#1b6497";
-    green = "#6a6a6a";
+    green = "#a5b930";
     cyan = "#71dad2";
     yellow = "#edda61";
     orange = "#f5b1a2";
