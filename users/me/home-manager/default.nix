@@ -27,12 +27,19 @@ in {
     ./helix.nix # https://helix-editor.com/ - trying this out as an alternative to vim
     ./zellij.nix # terminal multiplexer
     ./zsh.nix # shell, you know where to find it
-    # ./nushell.nix # a newer shell to try out
+    ./nushell.nix # a newer shell to try out
     ./window-manager # contains config for hyprland, widgets, etc.
     ./git.nix # yep
   ];
 
   options = {
+    outOfStore = lib.mkOption {
+      type = lib.types.path;
+      apply = toString;
+      default = "${config.home.homeDirectory}/.dotfiles/out-of-store";
+      example = "${config.home.homeDirectory}/.dotfiles/out-of-store";
+      description = "Location of the directory for out-of-store files";
+    };
     home.fullName = lib.mkOption {
       type = lib.types.str;
       default = fullName;
@@ -126,8 +133,15 @@ in {
                 else {
                 }
               )
+              {
+                ".local/nixBin" = {
+                  source = config.lib.file.mkOutOfStoreSymlink "${config.outOfStore}/bin";
+                };
+              }
             ];
         };
+
+        home.sessionPath = ["${config.home.homeDirectory}/.local/nixBin"];
 
         programs = {
           home-manager.enable = true;
