@@ -1,2 +1,4 @@
 #!/usr/bin/env nu
+# vim: ft=nu
+
 "Hello World!"

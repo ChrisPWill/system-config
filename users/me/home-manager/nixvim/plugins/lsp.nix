@@ -10,7 +10,7 @@ in {
       lua-language-server
       nil
       # Temp removed https://github.com/NixOS/nixpkgs/issues/390063
-      # nodePackages.graphql-language-service-cli
+      nodePackages.graphql-language-service-cli
       nodePackages.typescript-language-server
       rust-analyzer
       tailwindcss-language-server
@@ -27,25 +27,29 @@ in {
       servers = {
         bashls.enable = true;
         dockerls.enable = true;
-        # Temp removed https://github.com/NixOS/nixpkgs/issues/390063
-        # graphql.enable = true;
+        graphql.enable = true;
+        graphql.package = null;
         html.enable = true;
         jsonls.enable = true;
         lua_ls.enable = true;
         nil_ls.enable = true;
         nil_ls.settings.formatting.command = ["alejandra"];
+        nushell.enable = true;
         rust_analyzer = {
           enable = true;
           installCargo = false;
           installRustc = false;
         };
         tailwindcss.enable = true;
+        terraformls.enable = true;
         ts_ls = {
           enable = true;
           settings = {
             maxTsServerMemory = 8192;
           };
         };
+        vimls.enable = true;
+        yamlls.enable = true;
       };
     };
 

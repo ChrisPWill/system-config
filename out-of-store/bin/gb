@@ -1,4 +1,5 @@
 #!/usr/bin/env nu
+# vim: ft=nu
 
 def branches [] {
   git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)\t%(committerdate:iso8601)" |
