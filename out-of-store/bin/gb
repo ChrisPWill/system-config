@@ -1,0 +1,41 @@
+#!/usr/bin/env nu
+
+def branches [] {
+  git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)\t%(committerdate:iso8601)" |
+    lines |
+    split column "\t" branch date |
+    sort-by date |
+    reverse
+}
+
+def "main" [
+  --noLimit
+  --limit: int = 5
+] {
+    if $noLimit {
+      branches
+    } else {
+      branches |
+        take $limit
+    }
+}
+
+def "main switch" [] {
+  let selected = branches |
+    get branch |
+    insert 0 "New Branch" |
+    input list --fuzzy "Pick a branch"
+
+  if $selected == "New Branch" {
+    # Create a new branch
+    let newBranch = input "Enter new branch name:\n"
+    if ($newBranch | is-not-empty) {
+      git checkout -b $newBranch
+    } else {
+      echo "No branch name provided, exiting."
+    }
+      } else {
+    # Switch to the selected branch
+    git checkout $selected
+  }
+}
