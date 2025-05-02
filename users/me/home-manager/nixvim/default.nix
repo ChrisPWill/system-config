@@ -27,6 +27,8 @@
       ]);
 
     opts = {
+      swapfile = false; # don't create swap files
+
       autowrite = true; # autowrite when changing buffer
       termguicolors = true;
 
