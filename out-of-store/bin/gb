@@ -29,7 +29,7 @@ def "main switch" [] {
 
   if $selected == "New Branch" {
     # Create a new branch
-    let newBranch = input "Enter new branch name:\n"
+    let newBranch = input "Enter new branch name: "
     if ($newBranch | is-not-empty) {
       git checkout -b $newBranch
     } else {

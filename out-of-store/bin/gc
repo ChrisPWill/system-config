@@ -1,0 +1,33 @@
+#!/usr/bin/env nu
+# vim: ft=nu
+
+def issue [] {
+  let captured = git rev-parse --abbrev-ref HEAD | parse --regex '.*\/(\b[A-Z]+-\d+\b)\-.*'
+  if ($captured | is-not-empty) {
+    $captured | get 0 | get capture0
+  } else {
+    ''
+  }
+}
+
+def "main" [
+
+] {
+  let issue = issue
+  let commitMessage = input ('Enter commit message: ' + $issue + ' ')
+  print '(y) Add all files (n) Only include staged'
+
+  loop {
+    let key = (input listen --types [key])
+    if ($key.code == 'y') {
+      git add .
+      git commit -m $commitMessage
+      break
+    } else if ($key.code == 'n') {
+      git commit -m $commitMessage
+      break
+    } else {
+      print 'Invalid input. Please enter y or n.'
+    }
+  }
+}
