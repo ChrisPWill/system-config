@@ -14,7 +14,7 @@ def "main" [
 
 ] {
   let issue = issue
-  let commitMessage = input ('Enter commit message: ' + $issue + ' ')
+  let commitMessage = (if ($issue | is-not-empty) { $issue + ' ' } else { '' }) + (input ('Enter commit message: ' + $issue + ' '))
   print '(y) Add all files (n) Only include staged'
 
   loop {
