@@ -16,6 +16,9 @@
       "tfenv"
       "awscli"
     ];
+    taps = [
+      "nikitabobko/tap"
+    ];
     casks = [
       "alacritty"
       "amethyst"
@@ -30,7 +33,9 @@
       "scroll-reverser"
       "spotify"
       "visual-studio-code"
-      "nikitabobko/tap/aerospace"
+
+      # Window manager
+      "aerospace"
 
       # A notes app, more for outlining than obsidian
       "logseq"
@@ -40,9 +45,6 @@
 
       # AI coder
       "cursor"
-
-      # For work
-      "cloudtoken"
     ];
   };
 
