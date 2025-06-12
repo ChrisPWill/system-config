@@ -24,6 +24,8 @@
     # Aylur's GTK Shell https://aylur.github.io/ags-docs/
     # Wayland Widgets tool
     ags.url = "github:Aylur/ags";
+
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs = inputs: {

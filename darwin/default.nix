@@ -1,9 +1,25 @@
-{...}: {pkgs, ...}: {
+{...}: {
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.nix-homebrew.darwinModules.nix-homebrew
+  ];
+
   nix.enable = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   # Auto upgrade nix package
   nix.package = pkgs.nix;
   nixpkgs.config.allowUnfree = true;
+
+  nix-homebrew = {
+    enable = true;
+    enableRosetta = true;
+    autoMigrate = true;
+
+    user = "cwilliams";
+  };
 
   homebrew = {
     enable = true;
@@ -13,8 +29,16 @@
       cleanup = "uninstall";
     };
     brews = [
-      "tfenv"
-      "awscli"
+      # TODO: Fix this error
+      # Error: Cannot install in Homebrew on ARM processor in Intel default prefix (/usr/local)!
+      # Please create a new installation in /opt/homebrew using one of the
+      # "Alternative Installs" from:
+      #   https://docs.brew.sh/Installation
+      # You can migrate your previously installed formula list with:
+      #   brew bundle dump
+
+      # "tfenv"
+      # "awscli"
     ];
     taps = [
       "nikitabobko/tap"
@@ -47,6 +71,8 @@
       "cursor"
     ];
   };
+
+  system.primaryUser = "cwilliams";
 
   system.keyboard = {
     enableKeyMapping = true;
