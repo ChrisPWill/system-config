@@ -21,6 +21,31 @@ def "main" [
     }
 }
 
+def "newbranch" [] {
+  print '(s) Standard branch format (f) Free form'
+  loop {
+    let key = (input listen --types [key])
+    if ($key.code == 's') {
+      let taskName = input "Enter task name (e.g., ISSUE-123): "
+      let context = input "Enter context e.g. 'Fixing a bug': "
+      let contextWithDashesInsteadOfSpaces = $context | str replace --all ' ' '-'
+      git checkout -b ("cwilliams/" + $taskName + "-" + $contextWithDashesInsteadOfSpaces)
+      break
+    } else if ($key.code == 'f') {
+      let branchName = input "Enter branch name (e.g., feature/issue-123): "
+      if ($branchName | is-not-empty) {
+        git checkout -b $branchName
+        break
+      } else {
+        echo "No branch name provided, exiting."
+        return
+      }
+    } else {
+      echo "Invalid input. Please enter 's' for standard or 'f' for free form."
+    }
+  }
+}
+
 def "main switch" [] {
   let selected = branches |
     get branch |
@@ -28,14 +53,8 @@ def "main switch" [] {
     input list --fuzzy "Pick a branch"
 
   if $selected == "New Branch" {
-    # Create a new branch
-    let newBranch = input "Enter new branch name: "
-    if ($newBranch | is-not-empty) {
-      git checkout -b $newBranch
-    } else {
-      echo "No branch name provided, exiting."
-    }
-      } else {
+    newbranch
+  } else {
     # Switch to the selected branch
     git checkout $selected
   }
