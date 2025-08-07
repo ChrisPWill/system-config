@@ -457,6 +457,9 @@
         # Rust
         export PATH="$HOME/.cargo/bin:$PATH"
 
+        # pipx and other home local
+        export PATH="$HOME/.local/bin:$PATH"
+
         # Global NPM packages
         export PATH="$HOME/.npm-packages/bin:$PATH"
 

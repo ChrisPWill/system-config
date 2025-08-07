@@ -105,6 +105,9 @@ in {
 
               python3
 
+              # Python package manager
+              pipx
+
               # A good font
               nerd-fonts.fantasque-sans-mono
             ]
