@@ -13,7 +13,7 @@
       }
     ];
     brews = [
-      # "acli"
+      "acli"
     ];
     casks = [
       "google-drive"
