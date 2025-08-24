@@ -42,6 +42,10 @@
     ];
     taps = [
       "nikitabobko/tap"
+      {
+        name = "atlassian/lanyard";
+        clone_target = "git@bitbucket.org:atlassian/lanyard-tap.git";
+      }
     ];
     casks = [
       "alacritty"
@@ -69,6 +73,9 @@
 
       # AI coder
       "cursor"
+
+      # For testing Atlassian service calls
+      "lanyard"
     ];
   };
 
