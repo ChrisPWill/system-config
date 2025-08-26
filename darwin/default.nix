@@ -38,7 +38,7 @@
       #   brew bundle dump
 
       # "tfenv"
-      # "awscli"
+      "awscli"
     ];
     taps = [
       "nikitabobko/tap"
