@@ -50,7 +50,7 @@
     casks = [
       "alacritty"
       "amethyst"
-      "docker"
+      "docker-desktop"
 
       # Another modern terminal replacement
       "ghostty"

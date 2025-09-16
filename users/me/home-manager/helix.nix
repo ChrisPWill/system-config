@@ -13,7 +13,7 @@
     extraPackages = with pkgs; [
       # language servers
       bash-language-server
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       lua-language-server
       nil
       # Temp removed https://github.com/NixOS/nixpkgs/issues/390063

@@ -19,7 +19,7 @@
   isDarwin = pkgs.stdenv.isDarwin;
 in {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
     ./alacritty.nix # simple, fast terminal https://github.com/alacritty/alacritty
     ./wezterm.nix # exploring this as alacritty alternative https://wezfurlong.org/wezterm/index.html
     ./nixvim # neovim config system https://github.com/nix-community/nixvim

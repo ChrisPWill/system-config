@@ -1,11 +1,12 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.home.homeDirectory}/.config/zsh";
 
     history = {
       size = 10000;

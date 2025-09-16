@@ -98,20 +98,25 @@ in {
     # File tree on side
     nvim-tree = {
       enable = true;
-      hijackCursor = true;
-      modified.enable = true;
-      updateFocusedFile.enable = true;
-      renderer.groupEmpty = true;
-      view = {
-        preserveWindowProportions = true;
-      };
 
-      # Replace netrw (default explorer)
-      disableNetrw = true;
-      hijackNetrw = true;
-      hijackUnnamedBufferWhenOpening = true;
-      hijackDirectories.enable = true;
       openOnSetup = true;
+      settings = {
+        hijack_cursor = true;
+        modified.enable = true;
+        update_focused_file.enable = true;
+        renderer.group_empty = true;
+
+        view = {
+          preserve_window_proportions = true;
+        };
+
+        # Replace netrw (default explorer)
+        hijack_netrew = true;
+        disable_netrw = true;
+
+        hijack_unnamed_buffer_when_opening = true;
+        hijack_directories.enable = true;
+      };
     };
 
     # Add closing brackets/tags/etc.
