@@ -131,7 +131,7 @@ in {
               (
                 if (pkgs.stdenv.isDarwin)
                 then {
-                  ".aerospace.toml".source = ./config-files/aerospace.toml;
+                  ".aerospace.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.outOfStore}/config-files/aerospace.toml" ;
                 }
                 else {
                 }
