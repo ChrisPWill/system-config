@@ -61,17 +61,6 @@ in {
     };
   };
 
-  programs.nixvim.plugins.gitsigns = {
-    enable = true;
-    lazyLoad = {
-      settings = {
-        event = "DeferredUIEnter";
-      };
-    };
-    settings = {
-      current_line_blame = true;
-    };
-  };
 
   # Folds
   programs.nixvim.plugins.nvim-ufo = {

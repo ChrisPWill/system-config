@@ -15,6 +15,9 @@ in {
     # Refactoring tools
     ./refactoring.nix
 
+    # Git-related plugins
+    ./git.nix
+
     # Useful popup window tool
     ./telescope.nix
 
@@ -79,22 +82,6 @@ in {
     # Top bar with tabs etc.
     bufferline.enable = true;
 
-    # Git tools
-    fugitive.enable = true;
-
-    # Conflict resolution plugin (co for choose ours, ct for choose theirs,
-    # cb for both, c0 for none, ]x for next conflict, [x for prev conflict)
-    git-conflict = {
-      enable = true;
-      lazyLoad = {
-        settings = {
-          event = "DeferredUIEnter";
-        };
-      };
-    };
-
-    # Shows git changes on left side
-    gitgutter.enable = true;
 
     # Discourages bad habits, gives tips
     hardtime.enable = true;

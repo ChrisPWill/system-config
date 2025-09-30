@@ -24,11 +24,6 @@ in {
 
     plugins.lsp = {
       enable = true;
-      lazyLoad = {
-        settings = {
-          event = "DeferredUIEnter";
-        };
-      };
       servers = {
         bashls.enable = true;
         dockerls.enable = true;

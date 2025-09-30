@@ -25,6 +25,7 @@
         "<leader>fr" = "live_grep";
         "<leader>fb" = "buffers";
         "<leader>ft" = "treesitter";
+        "<leader>fd" = "diagnostics";
         "<leader>fgs" = "git_status";
         "<leader>fgb" = "git_branches";
         "<leader>fgcc" = "git_commits";
