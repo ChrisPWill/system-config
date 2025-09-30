@@ -111,7 +111,7 @@ in {
         };
 
         # Replace netrw (default explorer)
-        hijack_netrew = true;
+        hijack_netrw = true;
         disable_netrw = true;
 
         hijack_unnamed_buffer_when_opening = true;
