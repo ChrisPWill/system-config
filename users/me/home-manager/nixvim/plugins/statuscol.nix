@@ -3,6 +3,11 @@
 in {
   programs.nixvim.plugins.statuscol = {
     enable = true;
+    lazyLoad = {
+      settings = {
+        event = "DeferredUIEnter";
+      };
+    };
     settings = {
       setopt = true;
       ft_ignore = null;
@@ -58,6 +63,11 @@ in {
 
   programs.nixvim.plugins.gitsigns = {
     enable = true;
+    lazyLoad = {
+      settings = {
+        event = "DeferredUIEnter";
+      };
+    };
     settings = {
       current_line_blame = true;
     };
@@ -66,16 +76,31 @@ in {
   # Folds
   programs.nixvim.plugins.nvim-ufo = {
     enable = true;
+    lazyLoad = {
+      settings = {
+        event = "DeferredUIEnter";
+      };
+    };
     settings.provider_selector = ''
       function(bufnr, filetype, buftype)
         return {'treesitter', 'indent'}
       end
     '';
   };
-  programs.nixvim.keymaps = [
-    (keymapRaw "zR" "require('ufo').openAllFolds" "Open all folds (nvim-ufo)" {})
-    (keymapRaw "zM" "require('ufo').closeAllFolds" "Close all folds (nvim-ufo)" {})
-  ];
+  programs.nixvim.keymapsOnEvents = {
+    InsertEnter = [
+      {
+        key = "zR";
+        action = "require('ufo').openAllFolds";
+        options.desc = "Open all folds (nvim-ufo)";
+      }
+      {
+        key = "zM";
+        action = "require('ufo').closeAllFolds";
+        options.desc = "Close all folds (nvim-ufo)";
+      }
+    ];
+  };
   programs.nixvim.opts = {
     foldcolumn = "1";
     foldlevel = 99;

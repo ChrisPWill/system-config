@@ -7,6 +7,14 @@
       lazyLoad = {
         settings = {
           event = "InsertEnter";
+          keys = [
+            "<leader>rr"
+            "<leader>re"
+            "<leader>rE"
+            "<leader>rb"
+            "<leader>ri"
+            "<leader>rI"
+          ];
         };
       };
     };

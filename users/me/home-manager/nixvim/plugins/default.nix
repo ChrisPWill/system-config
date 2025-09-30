@@ -65,11 +65,16 @@ in {
 
   programs.nixvim.plugins = {
     # Bottom bar with statuses etc.
-    airline = {
-      enable = true;
-      settings.powerline_fonts = 1;
-      settings.extensions = [];
-    };
+    # airline = {
+    #   enable = true;
+    #   lazyLoad = {
+    #     settings = {
+    #       event = "VimEnter";
+    #     };
+    #   };
+    #   settings.powerline_fonts = 1;
+    #   settings.extensions = [];
+    lualine.enable = true;
 
     # Top bar with tabs etc.
     bufferline.enable = true;
@@ -79,7 +84,14 @@ in {
 
     # Conflict resolution plugin (co for choose ours, ct for choose theirs,
     # cb for both, c0 for none, ]x for next conflict, [x for prev conflict)
-    git-conflict.enable = true;
+    git-conflict = {
+      enable = true;
+      lazyLoad = {
+        settings = {
+          event = "DeferredUIEnter";
+        };
+      };
+    };
 
     # Shows git changes on left side
     gitgutter.enable = true;
@@ -104,7 +116,16 @@ in {
     nvim-tree = {
       enable = true;
 
-      openOnSetup = true;
+      openOnSetup = false;
+      lazyLoad = {
+        settings = {
+          event = "VimEnter";
+          keys = [
+            "<leader>nt"
+          ];
+        };
+      };
+
       settings = {
         hijack_cursor = true;
         modified.enable = true;

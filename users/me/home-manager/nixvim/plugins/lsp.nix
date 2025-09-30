@@ -24,6 +24,11 @@ in {
 
     plugins.lsp = {
       enable = true;
+      lazyLoad = {
+        settings = {
+          event = "DeferredUIEnter";
+        };
+      };
       servers = {
         bashls.enable = true;
         dockerls.enable = true;
@@ -63,6 +68,11 @@ in {
       };
     in {
       enable = true;
+      lazyLoad = {
+        settings = {
+          event = "DeferredUIEnter";
+        };
+      };
       settings = {
         format_on_save = ''
           function(bufnr)
