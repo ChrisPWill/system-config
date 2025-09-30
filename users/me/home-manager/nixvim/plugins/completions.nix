@@ -4,6 +4,8 @@
   ...
 }: let
   cfg = config.programs.nixvim.custom;
+  # Luasnip is not working yet, save CPU for now
+  enableLuasnip = false;
 in {
   programs.nixvim.extraConfigLuaPre = ''
     local has_words_before = function()
@@ -14,8 +16,13 @@ in {
   '';
   programs.nixvim.plugins = {
     luasnip = {
-      enable = true;
-      autoLoad = true;
+      enable = enableLuasnip;
+      lazyLoad = {
+        settings = {
+          event = "InsertEnter";
+        };
+      };
+      autoLoad = false;
       settings = {
         keep_roots = true;
         link_roots = true;
@@ -30,36 +37,79 @@ in {
         }
       ];
     };
-    friendly-snippets.enable = true;
-    cmp-nvim-lsp.enable = true;
-    cmp-nvim-lsp-document-symbol.enable = true;
+    friendly-snippets = {
+      enable = enableLuasnip;
+    };  
+    cmp-nvim-lsp = {
+      enable = true;
+    };
+    cmp-nvim-lsp-document-symbol = {
+      enable = true;
+      autoLoad = false;
+    };
 
-    cmp_luasnip.enable = true;
+    cmp_luasnip = {
+      enable = enableLuasnip;
+    };
     cmp-npm.enable = true;
-    cmp-path.enable = true;
+    cmp-path = {
+      enable = true;
+    };
+    cmp-buffer = {
+      enable = true;
+      autoLoad = false;
+    };
 
     copilot-lua = {
       enable = cfg.enableCopilot;
+      lazyLoad = {
+        settings = {
+          event = "InsertEnter";
+        };
+      };
       settings = {
         panel.enabled = false;
         suggestion.enabled = false;
       };
     };
-    copilot-cmp.enable = cfg.enableCopilot;
+    copilot-cmp = {
+      enable = cfg.enableCopilot;
+      lazyLoad = {
+        settings = {
+          before.__raw = ''
+            function()
+              require('lz.n').trigger_load('copilot-cmp')
+            end
+          '';
+          event = "InsertEnter";
+        };
+      };
+    };
 
     cmp = {
       enable = true;
-      autoEnableSources = true;
+      lazyLoad = {
+        settings = {
+          event = "InsertEnter";
+          after.__raw = ''
+            function()
+              require('lz.n').trigger_load('cmp_buffer')
+              require('lz.n').trigger_load('cmp_nvim_lsp_document_symbol')
+            end
+          '';
+        };
+      };
+      autoEnableSources = false;
 
       settings = {
-        snippet.expand = ''
+        snippet.expand = lib.mkIf enableLuasnip ''
           function(args)
             require("luasnip").lsp_expand(args.body)
           end
         '';
         sources =
           [
-            {name = "luasnip";}
+            (lib.mkIf enableLuasnip {name = "luasnip";})
             {name = "nvim_lsp";}
             {name = "nvim_lsp_signature_help";}
           ]
@@ -77,8 +127,8 @@ in {
             cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_next_item()
-              elseif require("luasnip").expand_or_jumpable() then
-                require("luasnip").expand_or_jump()
+              -- elseif require("luasnip").expand_or_jumpable() then
+              --   require("luasnip").expand_or_jump()
               elseif has_words_before() then
                 cmp.complete()
               else
@@ -90,8 +140,8 @@ in {
             cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_prev_item()
-              elseif require("luasnip").jumpable(-1) then
-                require("luasnip").jump(-1)
+              -- elseif require("luasnip").jumpable(-1) then
+              --   require("luasnip").jump(-1)
               else
                 fallback()
               end

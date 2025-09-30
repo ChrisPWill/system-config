@@ -2,9 +2,35 @@
   keymapRaw = utils.keymapRaw;
 in {
   programs.nixvim = {
-    plugins.dap-ui.enable = true;
+    plugins.dap-ui = {
+      # Not working yet, save CPU for now
+      enable = false;
+
+      lazyLoad = {
+        settings = {
+          before.__raw = ''
+            function()
+              require('lz.n').trigger_load('nvim-dap')
+            end
+          '';
+          keys = [
+            "<leader>td"
+          ];
+        };
+      };
+    };
+
     plugins.dap = {
-      enable = true;
+      # Not working yet, save CPU for now
+      enable = false;
+
+      lazyLoad = {
+        settings = {
+          keys = [
+            "<leader>td"
+          ];
+        };
+      };
 
       configurations.javascript = [
         {
@@ -25,13 +51,8 @@ in {
         #   };
         # };
       };
-    };
 
-    keymaps = [
-      (keymapRaw "<leader>td" "require('dapui').toggle" "Toggle DAP-UI (debugger UI)" {})
-    ];
-
-    extraConfigLua = ''
+      luaConfig.post = ''
       local dap, dapui = require("dap"), require("dapui")
       dap.listeners.before.attach.dapui_config = function()
         dapui.open()
@@ -45,7 +66,14 @@ in {
       dap.listeners.before.event_exited.dapui_config = function()
         dapui.close()
       end
-    '';
+      '';
+    };
+
+    # keymapsOnEvents = {
+    #   InsertEnter = [
+    #     (keymapRaw "<leader>td" "require('dapui').toggle" "Toggle DAP-UI (debugger UI)" {})
+    #   ];
+    # };
 
     extraPackages = with pkgs; [
       # vscode-js-debug

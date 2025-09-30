@@ -59,6 +59,9 @@
 
     # Performance tweaks
     luaLoader.enable = true;
+    lsp = {
+      inlayHints.enable = true;
+    };
     performance = {
       # https://nix-community.github.io/nixvim/performance/combinePlugins.html
       # If there are naming collisions, can use the standalonePlugins option
@@ -72,6 +75,7 @@
       byteCompileLua = {
         enable = true;
         nvimRuntime = true;
+        luaLib = true;
         configs = true;
         plugins = true;
       };

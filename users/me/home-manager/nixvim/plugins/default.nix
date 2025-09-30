@@ -68,6 +68,7 @@ in {
     airline = {
       enable = true;
       settings.powerline_fonts = 1;
+      settings.extensions = [];
     };
 
     # Top bar with tabs etc.
@@ -91,6 +92,10 @@ in {
 
     # Leap to parts of file with x and X
     leap.enable = true;
+
+    # Lazy loading
+    lz-n.enable = true;
+    lzn-auto-require.enable = true;
 
     # Notification manager
     notify.enable = true;

@@ -2,6 +2,21 @@
   programs.nixvim.plugins = {
     telescope = {
       enable = true;
+
+      lazyLoad = {
+        settings = {
+          keys = [
+            "<leader>ff"
+            "<leader>fr"
+            "<leader>fb"
+            "<leader>ft"
+            "<leader>fgs"
+            "<leader>fgb"
+            "<leader>fgcc"
+          ];
+        };
+      };
+
       extensions = {
         fzf-native.enable = true;
       };
